@@ -1,0 +1,175 @@
+
+
+-- set leader key --
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
+
+require('config.lazy')
+
+-- never use mouse --
+vim.opt.mouse = ''
+
+-- remember fold and position of cursor --
+vim.opt.viewoptions = {'folds', 'cursor'}
+local remember = vim.api.nvim_create_augroup('RememberFolds', {clear = true})
+vim.api.nvim_create_autocmd('BufWinLeave', {
+    group = remember,
+    pattern = '*',
+    callback = function()
+        pcall(vim.cmd, 'silent! mkview')
+    end,
+})
+
+vim.api.nvim_create_autocmd('BufWinEnter', {
+    group = remember,
+    pattern = '*',
+    callback = function()
+        pcall(vim.cmd, 'silent! loadview')
+    end,
+})
+
+
+
+-- set tab width to 4 --
+vim.opt.tabstop     = 4
+-- auto indent width to 4 --
+vim.opt.shiftwidth  = 4
+vim.opt.softtabstop = 0
+
+-- auto indent --
+vim.opt.smartindent = true
+vim.opt.autoindent  = true
+-- Tab to spaces --
+vim.opt.expandtab   = true
+
+-- display line number --
+vim.opt.number         = true
+vim.opt.relativenumber = true
+vim.opt.numberwidth    = 5
+
+-- can open 50 files --
+vim.opt.tabpagemax = 50
+
+-- show 2 at least lines under and above cursor line --
+vim.opt.scrolloff  = 2
+
+-- automatically reflects updates of the opened file --
+vim.opt.autoread = true
+
+-- max number of character to unlimited --
+vim.opt.textwidth = 0
+
+-- set color scheme --
+vim.cmd('syntax on')
+vim.cmd('colorscheme elflord')
+
+vim.opt.foldmethod     = 'indent'
+vim.opt.foldcolumn     = '1'
+vim.opt.foldlevelstart = 99
+
+vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+    pattern = 'Makefile',
+    callback = function()
+        vim.opt_local.expandtab = false
+    end,
+})
+
+vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+    pattern = '*.nml',
+    callback = function()
+        vim.bo.filetype = 'fortran'
+    end,
+})
+
+local start_at_first_line = vim.api.nvim_create_augroup("start_at_first_line", { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+    group    = start_at_first_line,
+    pattern  = 'gitcommit'        ,
+    callback = function()
+        vim.opt_local.viewoptions = ''
+        vim.cmd('normal! gg')
+    end,
+})
+
+-- macro for key mapping --
+local map = vim.keymap.set
+local nore          = {noremap = true}
+local nore_silent   = {noremap = true, silent = true}
+local nore_nosilent = {noremap = true, silent = false}
+-- Basic Cursor Movement --
+map({'n', 'v', 'o'}, '<S-h>', '^'  , nore)
+map({'n', 'v', 'o'}, '<S-l>', '$'  , nore)
+map({'n', 'v', 'o'}, '<S-k>', 'gg' , nore)
+map({'n', 'v', 'o'}, '<S-j>', 'G'  , nore)
+map({'n', 'v', 'o'}, '<C-h>', '10h', nore)
+map({'n', 'v', 'o'}, '<C-l>', '10l', nore)
+map({'n', 'v', 'o'}, '<C-k>', '10k', nore)
+map({'n', 'v', 'o'}, '<C-j>', '10j', nore)
+
+map('n', '<Leader>b', '%'    , nore_silent)
+map('n', 'x'        , '"_x'  , nore_silent)
+map('n', 's'        , '"_s'  , nore_silent)
+map('n', ';'        , ':'    , nore_silent)
+map('n', '<Leader>q', 'q:'   , nore_silent)
+map('n', 'q:'       , '<Nop>', nore_silent)
+map('n', '<Leader>n', ':set relativenumber!<CR>', nore_silent)
+
+-- set tab --
+map('n', '<Tab>'        , ':tabnext<CR>'    , nore_silent)
+map('n', '<S-Tab>'      , ':tabprevious<CR>', nore_silent)
+map('n', '<Leader>topen', ':tabnew '        , nore_nosilent)
+
+-- move window --
+map('n', '<Right>', ':wincmd l<CR>', nore_silent)
+map('n', '<Left>' , ':wincmd h<CR>', nore_silent)
+map('n', '<Up>'   , ':wincmd k<CR>', nore_silent)
+map('n', '<Down>' , ':wincmd j<CR>', nore_silent)
+
+-- set window --
+map('n', '<Leader>vs'   , ':vsplit<CR>', nore_silent  )
+map('n', '<Leader>hs'   , ':split<CR>' , nore_silent  )
+map('n', '<Leader>vopen', ':vsplit '   , nore_nosilent)
+map('n', '<Leader>hopen', ':split '    , nore_nosilent)
+map('n', '<Leader><BS>' , ':close<CR>' , nore_silent  )
+map('n', '<Leader>h'    , '<C-w><<CR>' , nore_silent  )
+map('n', '<Leader>l'    , '<C-w>><CR>' , nore_silent  )
+map('n', '<Leader>k'    , '<C-w>+<CR>' , nore_silent  )
+map('n', '<Leader>j'    , '<C-w>-<CR>' , nore_silent  )
+map('n', '<Leader>eq'   , '<C-w>=<CR>' , nore_silent  )
+
+-- return to normal mode --
+map('i', 'kj', '<Esc>', nore)
+map('i', 'Kj', '<Esc>', nore)
+map('i', 'KJ', '<Esc>', nore)
+
+-- indent modification file visual mode --
+map('v', '<', '<gv', nore)
+map('v', '>', '>gv', nore)
+
+-- let g:airline_section_c = '%F'
+
+local function replace_selected()
+    local old = vim.fn.getreg('/') or ''
+
+    if old:sub(1, 2) == '\\<' and old:sub(-2) == '\\>' then
+        old = old:sub(3, -3)
+    end
+
+    old = vim.fn.escape(old, '/')
+
+    local prompt = ('replace %s to '):format(old)
+    local new    = vim.fn.input(prompt)
+
+    if new == nil or new == '' then
+        vim.api.nvim_echo({ { "=> Warning : Specify a new word! rpl command was canceled", "WarningMsg" } }, false, {})
+        return
+    end
+
+    new = vim.fn.escape(new, '/')
+    vim.cmd(("%s/\\V%s/%s/g"):format("%", old, new))
+end
+vim.api.nvim_create_user_command('Rpl', replace_selected, {})
+vim.cmd('cabbrev rpl Rpl')
+
+
+
