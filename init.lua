@@ -1,4 +1,7 @@
 
+-- set color scheme --
+vim.cmd('syntax on')
+vim.cmd('colorscheme sorbet')
 
 -- set leader key --
 vim.g.mapleader = " "
@@ -60,9 +63,6 @@ vim.opt.autoread = true
 -- max number of character to unlimited --
 vim.opt.textwidth = 0
 
--- set color scheme --
-vim.cmd('syntax on')
-vim.cmd('colorscheme elflord')
 
 vim.opt.foldmethod     = 'indent'
 vim.opt.foldcolumn     = '1'

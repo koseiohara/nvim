@@ -6,11 +6,12 @@ return {
         config = function()
             require('lualine').setup{
                 options = {
-                    theme = 'powerline_dark',
+                    theme = 'powerline',
+                    globalstatusline = false,
                     icons_enabled = false,
                     section_separators = { left = '', right = '' },
                     component_separators = { left = '|', right = '|' },
-                    always_showtabline = true,
+                    -- always_showtabline = true,
                 },
                 sections = {
                     lualine_a = {'mode'},
@@ -36,10 +37,10 @@ return {
                         },
                     },
                 },
-                tablines = {
-                    lialine_a = {'tabs'},
-                    --lualine_b = {'branch'},
-                },
+                --tabline = {
+                --    lualine_a = {'filename'},
+                --    --lualine_b = {'branch'},
+                --},
             }
         end,
     },
