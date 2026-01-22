@@ -48,7 +48,8 @@ vim.opt.relativenumber = true
 vim.opt.numberwidth    = 5
 
 -- can open 50 files --
-vim.opt.tabpagemax = 50
+vim.opt.tabpagemax  = 50
+vim.opt.showtabline = 2
 
 -- show 2 at least lines under and above cursor line --
 vim.opt.scrolloff  = 2
