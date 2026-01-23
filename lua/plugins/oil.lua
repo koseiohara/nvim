@@ -16,6 +16,8 @@ return {
 
         oil.setup({
             keymaps = {
+                ['<C-h>'] = false,
+                ['<C-l>'] = false,
                 ['<CR>'] = {
                     callback = function()
                         local entry = oil.get_cursor_entry()

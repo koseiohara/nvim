@@ -98,14 +98,14 @@ local nore          = {noremap = true}
 local nore_silent   = {noremap = true, silent = true}
 local nore_nosilent = {noremap = true, silent = false}
 -- Basic Cursor Movement --
-map({'n', 'v', 'o'}, '<S-h>', '^'  , nore)
-map({'n', 'v', 'o'}, '<S-l>', '$'  , nore)
-map({'n', 'v', 'o'}, '<S-k>', 'gg' , nore)
-map({'n', 'v', 'o'}, '<S-j>', 'G'  , nore)
-map({'n', 'v', 'o'}, '<C-h>', '10h', nore)
-map({'n', 'v', 'o'}, '<C-l>', '10l', nore)
-map({'n', 'v', 'o'}, '<C-k>', '10k', nore)
-map({'n', 'v', 'o'}, '<C-j>', '10j', nore)
+map({'n', 'v', 'o'}, 'gh', '^'  , nore)
+map({'n', 'v', 'o'}, 'gl', '$'  , nore)
+map({'n', 'v', 'o'}, 'gk', 'gg' , nore)
+map({'n', 'v', 'o'}, 'gj', 'G'  , nore)
+map({'n', 'v', 'o'}, '<S-h>', '10h', nore)
+map({'n', 'v', 'o'}, '<S-l>', '10l', nore)
+map({'n', 'v', 'o'}, '<S-k>', '10k', nore)
+map({'n', 'v', 'o'}, '<S-j>', '10j', nore)
 
 map('n', '<Leader>b', '%'    , nore_silent)
 map('n', 'x'        , '"_x'  , nore_silent)
@@ -121,10 +121,14 @@ map('n', '<S-Tab>'      , ':tabprevious<CR>', nore_silent)
 map('n', '<Leader>topen', ':tabnew '        , nore_nosilent)
 
 -- move window --
-map('n', '<Right>', ':wincmd l<CR>', nore_silent)
-map('n', '<Left>' , ':wincmd h<CR>', nore_silent)
-map('n', '<Up>'   , ':wincmd k<CR>', nore_silent)
-map('n', '<Down>' , ':wincmd j<CR>', nore_silent)
+-- map('n', '<C-l>', ':wincmd l<CR>', nore_silent)
+-- map('n', '<C-h>', ':wincmd h<CR>', nore_silent)
+-- map('n', '<C-k>', ':wincmd k<CR>', nore_silent)
+-- map('n', '<C-j>', ':wincmd j<CR>', nore_silent)
+map('n', '<C-l>', '<C-w>l', nore_silent)
+map('n', '<C-h>', '<C-w>h', nore_silent)
+map('n', '<C-k>', '<C-w>k', nore_silent)
+map('n', '<C-j>', '<C-w>j', nore_silent)
 
 -- set window --
 map('n', '<Leader>vs'   , ':vsplit<CR>', nore_silent  )
