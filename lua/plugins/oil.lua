@@ -64,12 +64,26 @@ return {
             },
         })
 
-        vim.keymap.set('n', '<Leader>e', function()
-            local cwd = vim.fn.getcwd()
-            vim.cmd('vert leftabove Oil ' .. vim.fn.fnameescape(cwd))
-            vim.cmd('wincmd H')
+        local function open_oil_left(dir)
+            local oil = require('oil')
+            dir = dir or vim.fn.getcwd()
+
+            vim.cmd('topleft vsplit')
             vim.cmd('vertical resize 30')
+
+            oil.open(dir, nil, function()
+                vim.cmd('wincmd H')
+                vim.cmd('vertical resize 30')
+                vim.opt_local.number = false
+                vim.opt_relativenumber = false
+                vim.cmd('setlocal winfixwidth')
+            end)
+
             vim.cmd('wincmd l')
+        end
+
+        vim.keymap.set('n', '<Leader>e', function()
+            open_oil_left(vim.fn.getcwd())
         end,
         {
             desc = 'Open Oil on the left'
@@ -88,15 +102,7 @@ return {
         vim.api.nvim_create_autocmd('VimEnter', {
             callback = function()
                 vim.schedule(function()
-                    local oil = require('oil')
-                    local cwd = vim.fn.getcwd()
-
-                    vim.cmd('vsplit')
-                    vim.cmd('wincmd H')
-                    vim.cmd('vertical resize 30')
-
-                    oil.open(cwd)
-                    vim.cmd('wincmd l')
+                    open_oil_left(vim.fn.getcwd())
                 end)
             end,
         })
