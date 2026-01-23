@@ -22,7 +22,13 @@ return {
         vim.opt.splitright = true
         local oil = require('oil')
 
+
+        -- Automatically Open Oil --
         oil.setup({
+            view_options = {
+                show_hidden = true,
+            },
+
             keymaps = {
                 ['<C-h>'] = false,
                 ['<C-l>'] = false,
