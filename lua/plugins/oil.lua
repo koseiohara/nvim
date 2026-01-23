@@ -19,12 +19,16 @@ return {
             ctermbg = 237,
             ctermfg = 255,
         })
+        vim.api.nvim_set_hl(0, 'OilWinColor', {
+            ctermbg = 234,
+            ctermfg = 250,
+        })
         vim.opt.splitright = true
         local oil = require('oil')
 
 
-        -- Automatically Open Oil --
         oil.setup({
+            -- Automatically Open Oil --
             view_options = {
                 show_hidden = true,
             },
@@ -96,6 +100,22 @@ return {
             vim.cmd('wincmd l')
         end
 
+        _G.OilWinbar = function()
+            local oil = require('oil')
+            local dir = oil.get_current_dir() or ''
+
+            dir = dir:gsub('/$', '')
+
+            local name = vim.fn.fnamemodify(dir, ':t')
+            if name == '' then
+                name = dir == '/' and '/' or '[NO NAME]'
+            end
+
+                return table.concat({
+                    '%#OilWinColor#', 'Current >> ' .. name .. '/'
+                })
+        end
+
         vim.api.nvim_create_autocmd('FileType', {
             pattern = 'oil',
             callback = function()
@@ -106,6 +126,9 @@ return {
 
                 vim.opt_local.winhighlight = 'Normal:OilBackColor,' .. 
                                              'CursorLine:OilCursorLine,'
+
+               vim.opt_local.winbar = "%{%v:lua.OilWinbar()%}"
+
             end,
         })
 
