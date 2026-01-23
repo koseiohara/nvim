@@ -5,29 +5,53 @@ return {
     ---@module 'oil'
     -----@type oil.SetupOpts
     opts = {},
-    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+    -- dependencies = { { "nvim-mini/mini.icons", opts = {} } },
+    dependencies = { "nvim-mini/mini.icons" },
     -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
     config = function()
         vim.opt.splitright = true
         local oil = require('oil')
+
         oil.setup({
             keymaps = {
-                ["<CR>"] = {
+                ['<CR>'] = {
                     callback = function()
                         local entry = oil.get_cursor_entry()
                         if not entry then
                             return
                         end
 
-                        if entry.type == "directory" then
+                        if entry.type == 'directory' then
                             oil.select()
-                        else
-                            oil.select({ vertical = true, split = "belowright" })
+                            return
                         end
+
+                        local dir = oil.get_current_dir()
+                        if not dir then
+                            return
+                        end
+
+                        local path   = vim.fs.joinpath(dir, entry.name)
+                        local curwin = vim.api.nvim_get_current_win()
+
+                        vim.cmd('wincmd l')
+                        local rightwin = vim.api.nvim_get_current_win()
+
+                        if (rightwin == curwin) then
+                            -- vim.cmd('close')
+                            vim.cmd('edit ' .. vim.fn.fnameescape(path))
+                            vim.cmd('vert leftabove Oil')
+                            vim.cmd('wincmd H')
+                            vim.cmd('vertical resize 30')
+                            vim.cmd('wincmd l')
+                        else
+                            vim.cmd('edit ' .. vim.fn.fnameescape(path))
+                        end
+                            -- oil.select({ vertical = true, split = "belowright" })
                     end,
-                    desc = "Open file on the right, but cd into directory in Oil",
+                    desc = 'Open file on the right, but cd into directory in Oil',
                 }
             },
             win_options = {

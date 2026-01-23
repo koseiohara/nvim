@@ -53,6 +53,6 @@ vim.api.nvim_set_hl(0, 'FoldColumn'  , {cterm={}, ctermbg=0  , ctermfg=9  })
 vim.api.nvim_set_hl(0, 'TabLine'     , {cterm={}, ctermbg=237, ctermfg=255})
 vim.api.nvim_set_hl(0, 'TabLineSel'  , {cterm={bold=true}, ctermbg=242, ctermfg=255})
 vim.api.nvim_set_hl(0, 'TabLineFill' , {cterm={}, ctermbg=232, ctermfg=232})
-vim.api.nvim_set_hl(0, 'VertSplit'   , {cterm={}, ctermbg=245, ctermfg=245})
+vim.api.nvim_set_hl(0, 'VertSplit'   , {cterm={}, ctermbg=233, ctermfg=233})
 
 
