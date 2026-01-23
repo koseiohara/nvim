@@ -11,7 +11,6 @@ return {
                     icons_enabled = false,
                     section_separators = { left = '', right = '' },
                     component_separators = { left = '|', right = '|' },
-                    -- always_showtabline = true,
                 },
                 sections = {
                     lualine_a = {'mode'},
@@ -37,10 +36,6 @@ return {
                         },
                     },
                 },
-                --tabline = {
-                --    lualine_a = {'filename'},
-                --    --lualine_b = {'branch'},
-                --},
             }
         end,
     },
