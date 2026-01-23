@@ -127,7 +127,7 @@ return {
                 vim.opt_local.winhighlight = 'Normal:OilBackColor,' .. 
                                              'CursorLine:OilCursorLine,'
 
-               vim.opt_local.winbar = "%{%v:lua.OilWinbar()%}"
+                vim.opt_local.winbar = "%{%v:lua.OilWinbar()%}"
 
             end,
         })
