@@ -5,5 +5,6 @@ return {
     { import = 'plugins.commentary'},
     { import = 'plugins.hlchunk' },
     { import = 'plugins.barbar' },
+    { import = 'plugins.telescope' },
 }
 
