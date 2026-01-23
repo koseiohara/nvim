@@ -55,4 +55,8 @@ vim.api.nvim_set_hl(0, 'TabLineSel'  , {cterm={bold=true}, ctermbg=242, ctermfg=
 vim.api.nvim_set_hl(0, 'TabLineFill' , {cterm={}, ctermbg=232, ctermfg=232})
 vim.api.nvim_set_hl(0, 'VertSplit'   , {cterm={}, ctermbg=233, ctermfg=233})
 
+vim.api.nvim_set_hl(0, 'MainWinbarCrumb', {cterm={underline = true}, ctermbg=233, ctermfg=153})
+vim.api.nvim_set_hl(0, 'MainWinbarSep'  , {cterm={underline = true}, ctermbg=233, ctermfg=153})
+
+
 

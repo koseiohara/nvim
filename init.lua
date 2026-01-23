@@ -151,7 +151,7 @@ map('i', 'KJ', '<Esc>', nore)
 map('v', '<', '<gv', nore)
 map('v', '>', '>gv', nore)
 
--- let g:airline_section_c = '%F'
+vim.opt_local.winbar = "%{%v:lua.FileLocationWinBar()%}"
 
 local function replace_selected()
     local old = vim.fn.getreg('/') or ''
@@ -175,6 +175,60 @@ local function replace_selected()
 end
 vim.api.nvim_create_user_command('Rpl', replace_selected, {})
 vim.cmd('cabbrev rpl Rpl')
+
+
+_G.FileLocationWinBar = function()
+    if vim.bo.filetype == 'oil' then
+        return ''
+    end
+
+    if vim.bo.buftype ~= '' then
+        return ''
+    end
+
+    local dir = vim.fn.expand('%:p:h')
+    if not dir or dir == '' then
+        return ''
+    end
+
+    di = dir:gsub('/$', '')
+
+    if dir == '' then
+        dir = '/'
+    end
+
+    local parts = vim.split(dir, '/', { plain = true, trimempty = true })
+
+    local crumbs = {}
+    if dir:sub(1, 1) == '/' then
+        if #parts >= 1 then
+            table.insert(crumbs, '/' .. parts[1])
+            for i = 2, #parts do
+                table.insert(crumbs, parts[i])
+            end
+        else
+            table.insert(crumbs, '/')
+        end
+    else
+        for i = 1, #parts do
+            table.insert(crumbs, parts[i])
+        end
+    end
+
+    local out = {'    '}
+    for i, c in ipairs(crumbs) do
+        table.insert(out, '%#MainWinbarCrumb#')
+        table.insert(out, c)
+        if i <= #crumbs then
+            table.insert(out, '%#MainWinbarSep#')
+            table.insert(out, ' > ')
+        end
+    end
+    table.insert(out, '%#MainWinbarCrumb#')
+    table.insert(out, vim.fn.expand('%:t'))
+
+    return table.concat(out)
+end
 
 
 
