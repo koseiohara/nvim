@@ -11,6 +11,14 @@ return {
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
     config = function()
+        vim.api.nvim_set_hl(0, 'OilBackColor', {
+            ctermbg = 234,
+            ctermfg = 250,
+        })
+        vim.api.nvim_set_hl(0, 'OilCursorLine', {
+            ctermbg = 237,
+            ctermfg = 255,
+        })
         vim.opt.splitright = true
         local oil = require('oil')
 
@@ -82,13 +90,6 @@ return {
             vim.cmd('wincmd l')
         end
 
-        vim.keymap.set('n', '<Leader>e', function()
-            open_oil_left(vim.fn.getcwd())
-        end,
-        {
-            desc = 'Open Oil on the left'
-        })
-
         vim.api.nvim_create_autocmd('FileType', {
             pattern = 'oil',
             callback = function()
@@ -96,7 +97,17 @@ return {
                 vim.cmd('vertical resize 30')
                 vim.opt_local.number = false
                 vim.opt_local.relativenumber = false
+
+                vim.opt_local.winhighlight = 'Normal:OilBackColor,' .. 
+                                             'CursorLine:OilCursorLine,'
             end,
+        })
+
+        vim.keymap.set('n', '<Leader>e', function()
+            open_oil_left(vim.fn.getcwd())
+        end,
+        {
+            desc = 'Open Oil on the left'
         })
 
         vim.api.nvim_create_autocmd('VimEnter', {

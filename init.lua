@@ -48,7 +48,7 @@ vim.opt.expandtab   = true
 -- display line number --
 vim.opt.number         = true
 vim.opt.relativenumber = true
-vim.opt.numberwidth    = 5
+-- vim.opt.numberwidth    = 5
 
 -- can open 50 files --
 vim.opt.tabpagemax  = 50
@@ -65,7 +65,7 @@ vim.opt.textwidth = 0
 
 
 vim.opt.foldmethod     = 'indent'
-vim.opt.foldcolumn     = '1'
+vim.opt.foldcolumn     = '0'
 vim.opt.foldlevelstart = 99
 
 vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
