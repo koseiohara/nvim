@@ -16,14 +16,16 @@ return {
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
 
     config = function()
-        vim.api.nvim_set_hl(0, 'BufferCurrent'    , {cterm={bold}, ctermbg=152, ctermfg=16})
-        vim.api.nvim_set_hl(0, 'BufferCurrentMod' , {ctermbg=152, ctermfg=21})
-        vim.api.nvim_set_hl(0, 'BufferVisible'    , {ctermbg=235, ctermfg=152})
-        vim.api.nvim_set_hl(0, 'BufferAlternate'  , {ctermbg=235, ctermfg=152})
-        vim.api.nvim_set_hl(0, 'BufferInactive'   , {ctermbg=235, ctermfg=152})
-        vim.api.nvim_set_hl(0, 'BufferTabPageFill', {ctermbg=240, ctermfg=255})
-        vim.api.nvim_set_hl(0, 'BufferSeparator'  , {ctermbg=51 , ctermfg=51 })
-        -- vim.api.nvim_set_hl(0, 'BufferTabpagesSep', {ctermbg=51 , ctermfg=51 })
+        vim.api.nvim_set_hl(0, 'BufferCurrent'    , {cterm={bold}, bold=true, ctermbg=153, bg='#aec7ff', ctermfg=16 , fg='#000000'})
+        vim.api.nvim_set_hl(0, 'BufferCurrentMod' , {                         ctermbg=153, bg='#aec7ff', ctermfg=21 , fg='#0000ff'})
+        vim.api.nvim_set_hl(0, 'BufferVisible'    , {                         ctermbg=235, bg='#262626', ctermfg=153, fg='#aec7ff'})
+        vim.api.nvim_set_hl(0, 'BufferAlternate'  , {                         ctermbg=235, bg='#262626', ctermfg=153, fg='#aec7ff'})
+        vim.api.nvim_set_hl(0, 'BufferInactive'   , {                         ctermbg=235, bg='#262626', ctermfg=153, fg='#aec7ff'})
+        vim.api.nvim_set_hl(0, 'BufferSeparator'  , {                         ctermbg=51 , bg='#00ffff', ctermfg=51 , fg='#00ffff'})
+        vim.api.nvim_set_hl(0, 'BufferTabPageFill', {                         ctermbg=240, bg='#585858', ctermfg=255, fg='#ffffff'})
+        -- vim.api.nvim_set_hl(0, 'BufferTabPage', {                         ctermbg=240, bg='#585858', ctermfg=255, fg='#ffffff'})
+        vim.api.nvim_set_hl(0, 'BufferTabpages'   , {                         ctermbg=234, bg='#1c1c1c', ctermfg=222, fg='#ffcc90' })
+        vim.api.nvim_set_hl(0, 'BufferTabpagesSep', {                         ctermbg=234, bg='#1c1c1c', ctermfg=222, fg='#ffcc90' })
 
         require'barbar'.setup{
             animation = true,
@@ -37,7 +39,7 @@ return {
             icons = {
                 buffer_index  = false,
                 buffer_number = false,
-                buttom = '',
+                buttom = ' ',
                 diagnostics = {
                     [vim.diagnostic.severity.ERROR] = {enabled = false},
                     [vim.diagnostic.severity.WARN] = {enabled = false},
@@ -46,7 +48,7 @@ return {
                 },
                 filetype = {
                     custom_colors = false,
-                    enabled = false,
+                    enabled = true,
                 },
                 separator = {left='|', right=''},
                 inactive = {button = 'x'},
