@@ -88,6 +88,53 @@ return {
             },
         })
 
+        local function tab_has_oil(tabpage)
+            for _, win in ipairs(vim.api.nvim_tabpage_list_wins(tabpage)) do
+                local buf = vim.api.nvim_win_get_buf(win)
+                if vim.bo[buf].filetype == 'oil' then
+                    return true, win
+                end
+            end
+            return false, nil
+        end
+
+        local function ensure_oil_left(dir)
+            dir = dir or vim.fn.getcwd()
+
+            if vim.g._opening_oil_sidebar then 
+                return
+            end
+
+            vim.g._opening_oil_sidebar = true
+
+            local tab = vim.api.nvim_get_current_tabpage()
+            local has, oilwin = tab_has_oil(tab)
+
+            if not has then
+                vim.cmd('topleft vsplit')
+                vim.cmd('vertical resize 30')
+
+                local oil = require('oil')
+                oil.open(dir, nil, function()
+                    vim.cmd('wincmd H')
+                    vim.cmd('vertical resize 30')
+                    vim.opt_local.number = false
+                    vim.opt_local.relativenumber = false
+                    vim.cmd('setlocal winfixwidth')
+                end)
+
+                vim.cmd('wincmd l')
+            else
+                vim.api.nvim_set_current_win(oilwin)
+                vim.cmd('wincmd H')
+                vim.cmd('vertical resize 30')
+                vim.cmd('setlocal winfixwidth')
+                vim.cmd('wincmd l')
+            end
+            vim.g._opening_oil_sidebar = false
+        end
+
+
         local function open_oil_left(dir)
             local oil = require('oil')
             dir = dir or vim.fn.getcwd()
@@ -145,10 +192,11 @@ return {
             desc = 'Open Oil on the left'
         })
 
-        vim.api.nvim_create_autocmd('VimEnter', {
+        vim.api.nvim_create_autocmd({'VimEnter', 'TabEnter', 'TabNewEntered'}, {
             callback = function()
                 vim.schedule(function()
-                    open_oil_left(vim.fn.getcwd())
+                    -- open_oil_left(vim.fn.getcwd())
+                    ensure_oil_left(vim.fn.getcwd())
                 end)
             end,
         })
