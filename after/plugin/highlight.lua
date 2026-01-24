@@ -1,12 +1,13 @@
 
 
 vim.opt.cursorcolumn = true
+vim.opt.cursorline   = true
 local clgrp = vim.api.nvim_create_augroup(
     'CursorLineMode',
     {clear = true}
 )
 
-vim.api.nvim_create_autocmd('VimEnter', {
+vim.api.nvim_create_autocmd('BufRead', {
     group = clgrp,
     pattern = '*',
     callback = function()
@@ -15,7 +16,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
             ctermbg = 238,
             bg='#444444',
         })
-        vim.opt.cursorline = true
+        -- vim.opt.cursorline = true
     end,
 })
 
@@ -23,7 +24,7 @@ vim.api.nvim_create_autocmd('InsertEnter', {
     group = clgrp,
     pattern = '*',
     callback = function()
-        vim.opt.cursorline = true
+        -- vim.opt.cursorline = true
         vim.api.nvim_set_hl(0, 'CursorLine', {
             -- cterm = {underline = true},
             underline = true,
@@ -37,7 +38,7 @@ vim.api.nvim_create_autocmd('InsertLeave', {
     group = clgrp,
     pattern = '*',
     callback = function()
-        vim.opt.cursorline = true
+        -- vim.opt.cursorline = true
         vim.api.nvim_set_hl(0, 'CursorLine', {
             ctermbg = 238,
             bg='#444444',
