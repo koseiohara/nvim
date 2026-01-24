@@ -230,5 +230,39 @@ _G.FileLocationWinBar = function()
     return table.concat(out)
 end
 
+local function is_floating(win)
+    win = win or 0
+    local cfg = vim.api.nvim_win_get_config(win)
+    return cfg.relative ~= ''
+end
+
+local function set_winbar()
+    if is_floating(0) then
+        return
+    end
+
+    if vim.bo.buftype ~= '' then
+        return
+    end
+
+    vim.wo.winbar = '%{%v:lua.FileLocationWinBar()%}'
+end
+
+vim.api.nvim_create_autocmd(
+    {
+        'WinEnter',
+        'BufWinEnter',
+        'TabEnter',
+        'FileType',
+    },
+    {
+        group = vim.api.nvim_create_augroup('MyWinbar', { clear = true }),
+        callback = function()
+            set_winbar()
+        end,
+    }
+)
+
+
 
 
