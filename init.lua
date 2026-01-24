@@ -215,7 +215,8 @@ _G.FileLocationWinBar = function()
         end
     end
 
-    local out = {'    '}
+    local out = {'%#MainWinbarCrumb#'}
+    table.insert(out, '    ')
     for i, c in ipairs(crumbs) do
         table.insert(out, '%#MainWinbarCrumb#')
         table.insert(out, c)
