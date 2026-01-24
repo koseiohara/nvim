@@ -6,11 +6,11 @@ return {
         config = function()
             require('lualine').setup{
                 options = {
-                    theme = 'powerline',
+                    theme = 'tomorrow_night',
                     globalstatusline = false,
-                    icons_enabled = false,
-                    section_separators = { left = '', right = '' },
-                    component_separators = { left = '|', right = '|' },
+                    icons_enabled = true,
+                    section_separators = { left = '', right = '' },
+                    component_separators = { left = '', right = '' },
                 },
                 sections = {
                     lualine_a = {'mode'},
