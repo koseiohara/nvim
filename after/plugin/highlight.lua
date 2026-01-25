@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd('BufRead', {
         vim.api.nvim_set_hl(0, 'CursorLine', {
             -- cterm = {},
             ctermbg = 238,
-            bg='#444444',
+            bg='#303030',
         })
         -- vim.opt.cursorline = true
     end,
@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd('InsertEnter', {
             -- cterm = {underline = true},
             underline = true,
             ctermbg = 238,
-            bg='#444444',
+            bg='#303030',
         })
     end,
 })
@@ -41,12 +41,13 @@ vim.api.nvim_create_autocmd('InsertLeave', {
         -- vim.opt.cursorline = true
         vim.api.nvim_set_hl(0, 'CursorLine', {
             ctermbg = 238,
-            bg='#444444',
+            bg='#303030',
         })
     end,
 })
 
-vim.api.nvim_set_hl(0, 'CursorColumn'   , {cterm={}              ,                 ctermbg=238, bg='#444444'})
+-- vim.api.nvim_set_hl(0, 'CursorColumn'   , {cterm={}              ,                 ctermbg=238, bg='#444444'})
+vim.api.nvim_set_hl(0, 'CursorColumn'   , {cterm={}              ,                 ctermbg=238, bg='#303030'})
 vim.api.nvim_set_hl(0, 'Constant'       , {cterm={}              ,                                            ctermfg=10 , fg='#00ff00'})
 vim.api.nvim_set_hl(0, 'Comment'        , {cterm={}              ,                                            ctermfg=245, fg='#8a8a8a'})
 vim.api.nvim_set_hl(0, 'Folded'         , {cterm={}              ,                 ctermbg=18 , bg='#000087', ctermfg=202, fg='#ff5f00'})
