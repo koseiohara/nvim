@@ -140,6 +140,10 @@ map('n', '<Leader>h'    , '<C-w><<CR>' , nore_silent  )
 map('n', '<Leader>l'    , '<C-w>><CR>' , nore_silent  )
 map('n', '<Leader>k'    , '<C-w>+<CR>' , nore_silent  )
 map('n', '<Leader>j'    , '<C-w>-<CR>' , nore_silent  )
+map('n', '<right>'      , '<C-w><'     , nore_silent  )
+map('n', '<left>'       , '<C-w>>'     , nore_silent  )
+map('n', '<up>'         , '<C-w>+'     , nore_silent  )
+map('n', '<down>'       , '<C-w>-'     , nore_silent  )
 map('n', '<Leader>eq'   , '<C-w>=<CR>' , nore_silent  )
 
 -- return to normal mode --
