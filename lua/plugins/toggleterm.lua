@@ -7,6 +7,7 @@ return {
         config = function()
             require('toggleterm').setup({
                 persist_size = false,
+                start_in_insert = false,
                 size = function(term)
                     if term.direction == 'horizontal' then
                         return 15
