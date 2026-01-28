@@ -10,7 +10,7 @@ return {
                 start_in_insert = false,
                 size = function(term)
                     if term.direction == 'horizontal' then
-                        return 15
+                        return 10
                     elseif term.direction == 'vertical' then
                         return math.min(70, math.floor(vim.o.columns * 0.45))
                     end
