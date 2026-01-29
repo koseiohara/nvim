@@ -42,7 +42,7 @@ return {
                         {
                             function()
                                 local wc = vim.fn.wordcount()
-                                local out = tostring(wc.chars or 0) .. 'c, ' .. tostring(wc.words or 0) .. 'w'
+                                local out = tostring(math.max((vim.fn.wordcount().chars or 0) - 1, 0)) .. 'c, ' .. tostring(wc.words or 0) .. 'w'
                                 return out
                             end,
                         }
