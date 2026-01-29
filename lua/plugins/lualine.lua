@@ -42,7 +42,8 @@ return {
                         {
                             function()
                                 local wc = vim.fn.wordcount()
-                                return tostring(wc.words or 0) .. ' words'
+                                local out = tostring(wc.chars or 0) .. 'c, ' .. tostring(wc.words or 0) .. 'w'
+                                return out
                             end,
                         }
                     }
