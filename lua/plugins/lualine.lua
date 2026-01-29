@@ -38,6 +38,14 @@ return {
                             'filetype',
                         },
                     },
+                    lualine_y = {
+                        {
+                            function()
+                                local wc = vim.fn.wordcount()
+                                return tostring(wc.words or 0) .. ' words'
+                            end,
+                        }
+                    }
                 },
             }
         end,
