@@ -153,7 +153,7 @@ return {
                 vim.cmd('wincmd H')
                 vim.cmd('vertical resize 30')
                 vim.opt_local.number = false
-                vim.opt_relativenumber = false
+                vim.opt_local.relativenumber = false
                 vim.cmd('setlocal winfixwidth')
             end)
 
@@ -202,6 +202,11 @@ return {
         vim.api.nvim_create_autocmd({'VimEnter', 'TabEnter', 'TabNewEntered'}, {
             callback = function()
                 vim.schedule(function()
+                    local ft = vim.bo.filetype
+                    if ft == 'gitcommit' or ft == 'gitrebase' then
+                        return
+                    end
+
                     -- open_oil_left(vim.fn.getcwd())
                     ensure_oil_left(vim.fn.getcwd())
                 end)
