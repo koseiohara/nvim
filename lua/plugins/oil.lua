@@ -11,6 +11,13 @@ return {
     -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
     lazy = false,
     config = function()
+        vim.api.nvim_set_hl(0, 'NormalFloat', {
+            bg = '#ffffff',
+            fg = '#6a6a6a',
+        })
+        vim.api.nvim_set_hl(0, 'OilCreate', {
+            fg = '#00008c',
+        })
         vim.api.nvim_set_hl(0, 'OilBackColor', {
             ctermbg = 234,
             ctermfg = 250,
