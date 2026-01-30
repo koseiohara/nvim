@@ -156,24 +156,22 @@ vim.opt_local.winbar = "%{%v:lua.FileLocationWinBar()%}"
 local function replace_selected()
     local old = vim.fn.getreg('/') or ''
 
-    if old:sub(1, 2) == '\\<' and old:sub(-2) == '\\>' then
-        old = old:sub(3, -3)
-    end
-
-    old = vim.fn.escape(old, '/')
-
-    local prompt = ('replace %s to '):format(old)
-    local new    = vim.fn.input(prompt)
-
-    if new == nil or new == '' then
-        vim.api.nvim_echo({ { "=> Warning : Specify a new word! rpl command was canceled", "WarningMsg" } }, false, {})
+    if old == '' then
+        vim.api.nvim_echo({ { '=> Warning : No visual selection', 'WarningMsg' } }, false, {})
         return
     end
 
-    new = vim.fn.escape(new, '/')
-    vim.cmd(("%s/\\V%s/%s/g"):format("%", old, new))
+    local new = vim.fn.input(('replace /%s/ to: '):format(old))
+    if new == nil or new == '' then
+        vim.api.nvim_echo({ { '=> Warning : Specify a new word! rpl command was canceled', 'WarningMsg' } }, false, {})
+        return
+    end
+
+    local rep = vim.fn.escape(new, [[\/\&]])
+
+    vim.cmd(('%%s/%s/%s/g'):format(old, rep))
 end
-vim.api.nvim_create_user_command('Rpl', replace_selected, {})
+vim.api.nvim_create_user_command('Rpl', replace_selected, {range = true})
 vim.cmd('cabbrev rpl Rpl')
 
 
