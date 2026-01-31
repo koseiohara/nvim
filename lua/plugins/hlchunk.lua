@@ -2,6 +2,10 @@
 return {
     {
         'shellRaining/hlchunk.nvim',
+        cond = function()
+            return not vim.g.bigfile_mode
+        end,
+
         config = function()
             require('hlchunk').setup({
                 chunk = {

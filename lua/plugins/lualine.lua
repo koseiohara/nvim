@@ -3,6 +3,10 @@ return {
     {
         "nvim-lualine/lualine.nvim",
         dependencies = { 'nvim-tree/nvim-web-devicons' },
+        -- cond = function()
+        --     return not vim.g.bigfile_mode
+        -- end,
+
         config = function()
             require('lualine').setup{
                 options = {
@@ -40,9 +44,12 @@ return {
                     },
                     lualine_y = {
                         {
+                            cond = function()
+                                return not vim.g.bigfile_mode
+                            end,
                             function()
-                                local wc = vim.fn.wordcount()
-                                local out = tostring(math.max((vim.fn.wordcount().chars or 0) - 1, 0)) .. 'c, ' .. tostring(wc.words or 0) .. 'w'
+                                local wc  = vim.fn.wordcount()
+                                local out = tostring(math.max((wc.chars or 0) - 1, 0)) .. 'c, ' .. tostring(wc.words or 0) .. 'w'
                                 return out
                             end,
                         }

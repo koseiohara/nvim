@@ -15,6 +15,10 @@ return {
     },
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
 
+    cond = function()
+        return not vim.g.bigfile_mode
+    end,
+
     config = function()
         vim.api.nvim_set_hl(0, 'BufferCurrent'    , {cterm={bold}, bold=true, ctermbg=153, bg='#aec7ff', ctermfg=16 , fg='#000000'})
         vim.api.nvim_set_hl(0, 'BufferCurrentMod' , {                         ctermbg=153, bg='#aec7ff', ctermfg=21 , fg='#0000ff'})
