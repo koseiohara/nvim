@@ -199,19 +199,19 @@ return {
             desc = 'Open Oil on the left'
         })
 
-        vim.api.nvim_create_autocmd({'VimEnter', 'TabEnter', 'TabNewEntered'}, {
-            callback = function()
-                vim.schedule(function()
-                    local ft = vim.bo.filetype
-                    if ft == 'gitcommit' or ft == 'gitrebase' then
-                        return
-                    end
+        -- vim.api.nvim_create_autocmd({'VimEnter', 'TabEnter', 'TabNewEntered'}, {
+        --     callback = function()
+        --         vim.schedule(function()
+        --             local ft = vim.bo.filetype
+        --             if ft == 'gitcommit' or ft == 'gitrebase' then
+        --                 return
+        --             end
 
-                    -- open_oil_left(vim.fn.getcwd())
-                    ensure_oil_left(vim.fn.getcwd())
-                end)
-            end,
-        })
+        --             -- open_oil_left(vim.fn.getcwd())
+        --             ensure_oil_left(vim.fn.getcwd())
+        --         end)
+        --     end,
+        -- })
     end,
 }
 
