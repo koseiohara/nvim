@@ -193,10 +193,16 @@ return {
         })
 
         vim.keymap.set('n', '<Leader>e', function()
-            open_oil_left(vim.fn.getcwd())
+            local tab = vim.api.nvim_get_current_tabpage()
+            local hasOil, oilWin = tab_has_oil(tab)
+            if hasOil then
+                vim.api.nvim_win_close(oilWin, false)
+            else
+                open_oil_left(vim.fn.getcwd())
+            end
         end,
         {
-            desc = 'Open Oil on the left'
+            desc = 'Open/Close Oil on the left'
         })
 
         -- vim.api.nvim_create_autocmd({'VimEnter', 'TabEnter', 'TabNewEntered'}, {

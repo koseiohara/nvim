@@ -140,7 +140,6 @@ map('n', '<right>'      , '<C-w><'     , nore_silent  )
 map('n', '<left>'       , '<C-w>>'     , nore_silent  )
 map('n', '<up>'         , '<C-w>+'     , nore_silent  )
 map('n', '<down>'       , '<C-w>-'     , nore_silent  )
-map('n', '<Leader>eq'   , '<C-w>=<CR>' , nore_silent  )
 
 -- return to normal mode --
 map('i', 'kj', '<Esc>', nore)
