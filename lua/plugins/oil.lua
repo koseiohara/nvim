@@ -147,11 +147,11 @@ return {
             dir = dir or vim.fn.getcwd()
 
             vim.cmd('topleft vsplit')
-            vim.cmd('vertical resize 30')
+            vim.cmd('vertical resize 40')
 
             oil.open(dir, nil, function()
                 vim.cmd('wincmd H')
-                vim.cmd('vertical resize 30')
+                vim.cmd('vertical resize 40')
                 vim.opt_local.number = false
                 vim.opt_local.relativenumber = false
                 vim.cmd('setlocal winfixwidth')
