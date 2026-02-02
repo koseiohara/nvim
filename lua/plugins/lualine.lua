@@ -48,8 +48,11 @@ return {
                                 return not vim.g.bigfile_mode
                             end,
                             function()
-                                local wc  = vim.fn.wordcount()
-                                local out = tostring(math.max((wc.chars or 0) - 1, 0)) .. 'c, ' .. tostring(wc.words or 0) .. 'w'
+                                local wc    = vim.fn.wordcount()
+                                local chars = tostring(math.max((wc.chars or 0) - 1, 0)) .. 'c'
+                                local words = tostring(wc.words or 0) .. 'w'
+                                local lines = tostring(vim.fn.line('$') or 0) .. 'l'
+                                local out   =  chars .. ', ' .. words ..', ' .. lines
                                 return out
                             end,
                         }
