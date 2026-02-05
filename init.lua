@@ -50,17 +50,9 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
 
 
 
--- set tab width to 4 --
-vim.opt.tabstop     = 4
--- auto indent width to 4 --
-vim.opt.shiftwidth  = 4
-vim.opt.softtabstop = 0
-
 -- auto indent --
 vim.opt.smartindent = true
 vim.opt.autoindent  = true
--- Tab to spaces --
-vim.opt.expandtab   = true
 
 -- display line number --
 vim.opt.number         = true
@@ -85,12 +77,12 @@ vim.opt.foldmethod     = 'indent'
 vim.opt.foldcolumn     = '0'
 vim.opt.foldlevelstart = 99
 
-vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
-    pattern = 'Makefile',
-    callback = function()
-        vim.opt_local.expandtab = false
-    end,
-})
+-- vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
+--     pattern = 'Makefile',
+--     callback = function()
+--         vim.opt_local.expandtab = false
+--     end,
+-- })
 
 vim.api.nvim_create_autocmd({'BufRead', 'BufNewFile'}, {
     pattern = '*.nml',
