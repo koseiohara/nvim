@@ -10,6 +10,7 @@ vim.g.mapleader = " "
 -- vim.g.maplocalleader = "\\"
 
 require('config.is_big_file')
+require('config.linenumber')
 require('config.keymap')
 require('config.viewoption')
 require('config.lazy')
@@ -27,8 +28,8 @@ vim.opt.smartindent = true
 vim.opt.autoindent  = true
 
 -- display line number --
-vim.opt.number         = true
-vim.opt.relativenumber = true
+-- vim.opt.number         = true
+-- vim.opt.relativenumber = true
 -- vim.opt.numberwidth    = 5
 
 -- can open 50 files --

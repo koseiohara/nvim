@@ -2,7 +2,7 @@
 
 local grp = vim.api.nvim_create_augroup('ForceIndent', { clear = true })
 
-vim.api.nvim_create_autocmd('FileType', {
+vim.api.nvim_create_autocmd({'FileType', 'BufEnter'}, {
     group   = grp,
     pattern = '*',
     callback = function()
