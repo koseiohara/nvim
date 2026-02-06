@@ -47,9 +47,10 @@ return {
             },
 
             keymaps = {
-                ['<C-h>'] = false,
-                ['<C-l>'] = false,
-                ['<CR>'] = {
+                ['<C-h>']  = false,
+                ['<C-l>']  = false,
+                ['<CR>']   = 'actions.select_tab',
+                ['<C-CR>'] = {
                     callback = function()
                         local entry = oil.get_cursor_entry()
                         if not entry then
