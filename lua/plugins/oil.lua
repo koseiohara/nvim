@@ -49,27 +49,8 @@ return {
             keymaps = {
                 ['<C-h>']  = false,
                 ['<C-l>']  = false,
-                ['h']      = 'actions.parent',
+                ['<BS>']   = 'actions.parent',
                 ['<CR>']   = 'actions.select_tab',
-                ['l']      = {
-                    callback = function()
-                        local entry = oil.get_cursor_entry()
-                        if not entry then
-                            return
-                        end
-
-                        if entry.type == 'directory' then
-                            local dir = oil.get_current_dir()
-                            if not dir then
-                                return
-                            end
-
-                            local target = vim.fs.joinpath(dir, entry.name)
-                            oil.open(target)
-                        end
-                    end,
-                    desc = 'Enter when directory',
-                },
                 ['<C-CR>'] = {
                     callback = function()
                         local entry = oil.get_cursor_entry()
@@ -168,11 +149,11 @@ return {
             dir = dir or vim.fn.getcwd()
 
             vim.cmd('topleft vsplit')
-            vim.cmd('vertical resize 40')
+            vim.cmd('vertical resize 30')
 
             oil.open(dir, nil, function()
                 vim.cmd('wincmd H')
-                vim.cmd('vertical resize 40')
+                vim.cmd('vertical resize 30')
                 vim.opt_local.number = false
                 vim.opt_local.relativenumber = false
                 vim.cmd('setlocal winfixwidth')
