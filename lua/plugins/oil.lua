@@ -49,7 +49,27 @@ return {
             keymaps = {
                 ['<C-h>']  = false,
                 ['<C-l>']  = false,
+                ['h']      = 'actions.parent',
                 ['<CR>']   = 'actions.select_tab',
+                ['l']      = {
+                    callback = function()
+                        local entry = oil.get_cursor_entry()
+                        if not entry then
+                            return
+                        end
+
+                        if entry.type == 'directory' then
+                            local dir = oil.get_current_dir()
+                            if not dir then
+                                return
+                            end
+
+                            local target = vim.fs.joinpath(dir, entry.name)
+                            oil.open(target)
+                        end
+                    end,
+                    desc = 'Enter when directory',
+                },
                 ['<C-CR>'] = {
                     callback = function()
                         local entry = oil.get_cursor_entry()
