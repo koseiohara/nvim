@@ -46,24 +46,19 @@ return {
                 show_hidden = true,
             },
             buf_options = {
-                buflisted = true,
-                bufhidden = hide,
+                buflisted = false,
+                bufhidden = 'hide',
             },
 
             keymaps = {
                 ['<C-h>']  = false,
                 ['<C-l>']  = false,
                 ['<BS>']   = 'actions.parent',
-                ['<CR>']   = 'actions.select_tab',
-                ['<C-CR>'] = {
+                ['<C-CR>'] = 'actions.select_tab',
+                ['<CR>'] = {
                     callback = function()
                         local entry = oil.get_cursor_entry()
                         if not entry then
-                            return
-                        end
-
-                        if entry.type == 'directory' then
-                            oil.select()
                             return
                         end
 
@@ -72,26 +67,17 @@ return {
                             return
                         end
 
-                        local path   = vim.fs.joinpath(dir, entry.name)
-                        local curwin = vim.api.nvim_get_current_win()
+                        local path = dir .. entry.name
+                        local is_dir = (vim.fn.isdirectory(path) == 1)
 
-                        vim.cmd('wincmd l')
-                        local rightwin = vim.api.nvim_get_current_win()
-
-                        if (rightwin == curwin) then
-                            -- vim.cmd('close')
-                            vim.cmd('edit ' .. vim.fn.fnameescape(path))
-                            vim.cmd('vert leftabove Oil')
-                            vim.cmd('wincmd H')
-                            vim.cmd('vertical resize 30')
-                            vim.cmd('wincmd l')
+                        if is_dir then
+                            oil.select()
                         else
-                            vim.cmd('edit ' .. vim.fn.fnameescape(path))
+                            oil.select({tab=true})
                         end
-                            -- oil.select({ vertical = true, split = "belowright" })
                     end,
-                    desc = 'Open file on the right, but cd into directory in Oil',
-                }
+                    -- desc = 'Open file on the right, but cd into directory in Oil',
+                },
             },
             win_options = {
                 wrap = false,
