@@ -12,7 +12,7 @@ return {
         opts = {
             ensure_installed = {
                 'fortls',
-                'pyright',
+                'pylsp',
                 'texlab',
                 'ltex',
             },

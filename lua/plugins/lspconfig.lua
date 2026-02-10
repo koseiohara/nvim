@@ -1,7 +1,4 @@
 
--- Note
--- node is needed to install pyright
-
 return {
     'neovim/nvim-lspconfig',
  
@@ -88,7 +85,7 @@ return {
         end
 
         local function python_root(fname)
-            return vim.fs.root(fname, { "pyrightconfig.json", "pyproject.toml", ".git" })
+            return vim.fs.root(fname, { 'pyproject.toml', 'pyrightconfig.json', '.git' })
         end
 
         local function tex_root(fname)
@@ -112,13 +109,73 @@ return {
         -- =========================================
         --  LSP Server Setting for Python
         -- =========================================
-        vim.lsp.config('pyright', {
+        vim.lsp.config('pylsp', {
             on_attach = on_attach,
             filetypes = { 'python' },
             root_dir  = python_root,
 
             settings = {
-                pyright = {
+                pylsp = {
+                    plugins = {
+                        pyflakes = {
+                            enabled = true,
+                        },
+
+                        -- =====================
+                        --  Disables
+                        -- =====================
+                        pycodestyle = {
+                            enabled = false,
+                        },
+
+                        flake8 = {
+                            enabled = false,
+                        },
+
+                        mccabe = {
+                            enabled = false,
+                        },
+
+                        pylint = {
+                            enabled = false,
+                        },
+
+                        autopep8 = {
+                            enabled = false,
+                        },
+
+                        yapf = {
+                            enabled = false,
+                        },
+
+                        black = {
+                            enabled = false,
+                        },
+
+                        jedi_completion = {
+                            enabled = false,
+                        },
+
+                        jedi_definition = {
+                            enabled = false,
+                        },
+
+                        jedi_hover = {
+                            enabled = false,
+                        },
+
+                        jedi_references = {
+                            enabled = false,
+                        },
+
+                        jedi_signature_help = {
+                            enabled = false,
+                        },
+
+                        rope_autoimport = {
+                            enabled = false,
+                        },
+                    },
                 },
             },
         })
@@ -171,7 +228,7 @@ return {
 
         vim.lsp.enable({
             'fortls',
-            'pyright',
+            'pylsp',
             'texlab',
             'ltex',
         })
