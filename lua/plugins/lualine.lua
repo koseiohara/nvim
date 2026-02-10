@@ -19,9 +19,18 @@ return {
                 sections = {
                     lualine_a = {'mode'},
                     lualine_b = {
-			    'branch',
-			    'diagnostics',
-		    },
+			            'branch',
+                        {
+                            'diagnostics',
+                            source = {
+                                'nvim_diagnostic'
+                            },
+                            sections = {
+                                'error',
+                                'warn',
+                            },
+                        },
+		            },
                     lualine_c = {
                         {
                             'hostname',
