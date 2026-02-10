@@ -13,7 +13,7 @@ return {
         vim.keymap.set('i', '<C-p>', '<Nop>', { silent = true })
 
         vim.diagnostic.config({
-            virtual_text = false,
+            virtual_text = true,
             underline    = true,
             signs        = true,
             update_in_insert = false,
@@ -120,6 +120,33 @@ return {
             return vim.fs.root(fname, { '.latexmkrc', '.git' }) or vim.fs.dirname(fname)
         end
 
+        do
+            local orig = vim.lsp.handlers["window/showMessage"]
+        
+            vim.lsp.handlers["window/showMessage"] = function(err, result, ctx, config)
+                local client = vim.lsp.get_client_by_id(ctx.client_id)
+        
+                if client and client.name == "fortls" and result then
+                    if result.type == vim.lsp.protocol.MessageType.Info then
+                        return
+                    end
+
+                    if result.type == vim.lsp.protocol.MessageType.Warning then
+                        local msg = result.message or ""
+                        if msg:match("Failed to update the fortls") then
+                            return
+                        end
+                    end
+                    -- local msg = result.message or ""
+                    -- if msg == "fortls initialization complete" or msg == "fortls debugging enabled" then
+                    --     return
+                    -- end
+                end
+        
+                return orig(err, result, ctx, config)
+            end
+        end
+
         -- =========================================
         --  LSP Server Setting for Fortran
         -- =========================================
@@ -127,8 +154,8 @@ return {
         vim.lsp.config('fortls', {
             cmd = {
                 mason_bin .. "/fortls",
-                "--debug_log",
-                "--disable_autoupdate",
+                -- "--debug_log",
+                -- "--disable_autoupdate",
                 "--notify_init",
                 "--hover_signature",
                 "--hover_language=fortran",
@@ -140,6 +167,7 @@ return {
 
             settings = {
                 fortls = {
+                    disable_diagnostics = false,
                 },
             },
         })
