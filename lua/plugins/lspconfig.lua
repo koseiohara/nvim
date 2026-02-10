@@ -23,37 +23,65 @@ return {
         -- =========================================
         --  Diagnostic Threshold
         -- =========================================
-        local function set_fortran_diagnostic_handlers(bufnr, show_warnings)
+        local function set_standard_diagnostic_handlers(client, show_warnings)
             local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
-            vim.diagnostic.config({
+
+            local ns = nil
+            if client and client.id then
+                local ok, v = pcall(function()
+                    -- return vim.lsp.diagnostic.get_namespace(client.id)
+                    if vim.lsp.diagnostic and vim.lsp.diagnostic.get_namespace then
+                        return vim.lsp.diagnostic.get_namespace(client.id)
+                    end
+                    return nil
+                end)
+                if ok and type(v) == "number" then
+                    ns = v
+                end
+            end
+
+            local opts = {
                 underline = { severity = { min = min } },
                 signs     = { severity = { min = min } },
-            }, bufnr)
+            }
+
+            if not ns then
+                return
+            end
+            vim.diagnostic.config(opts, ns)
         end
 
-        local function set_python_diagnostic_handlers(bufnr, show_warnings)
-            local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
-            vim.diagnostic.config({
-                underline = { severity = { min = min } },
-                signs     = { severity = { min = min } },
-            }, bufnr)
-        end
+        -- local function set_fortran_diagnostic_handlers(bufnr, show_warnings)
+        --     local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
+        --     vim.diagnostic.config({
+        --         underline = { severity = { min = min } },
+        --         signs     = { severity = { min = min } },
+        --     }, bufnr)
+        -- end
 
-        local function set_lua_diagnostic_handlers(bufnr, show_warnings)
-            local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
-            vim.diagnostic.config({
-                underline = { severity = { min = min } },
-                signs     = { severity = { min = min } },
-            }, bufnr)
-        end
+        -- local function set_python_diagnostic_handlers(bufnr, show_warnings)
+        --     local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
+        --     vim.diagnostic.config({
+        --         underline = { severity = { min = min } },
+        --         signs     = { severity = { min = min } },
+        --     }, bufnr)
+        -- end
 
-        local function set_tex_diagnostic_handlers(bufnr, show_warnings)
-            local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
-            vim.diagnostic.config({
-                underline = { severity = { min = min } },
-                signs     = { severity = { min = min } },
-            }, bufnr)
-        end
+        -- local function set_lua_diagnostic_handlers(bufnr, show_warnings)
+        --     local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
+        --     vim.diagnostic.config({
+        --         underline = { severity = { min = min } },
+        --         signs     = { severity = { min = min } },
+        --     }, bufnr)
+        -- end
+
+        -- local function set_tex_diagnostic_handlers(bufnr, show_warnings)
+        --     local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
+        --     vim.diagnostic.config({
+        --         underline = { severity = { min = min } },
+        --         signs     = { severity = { min = min } },
+        --     }, bufnr)
+        -- end
 
         -- =========================================
         --  Global toggles (language-agnostic)
@@ -84,6 +112,17 @@ return {
         local function on_attach(client, bufnr)
             disable_ui_capabilities(client, bufnr)
             -- set_tex_diagnostic_handlers(bufnr, tex_show_warnings)
+            if client.name == 'fortls' then
+                set_standard_diagnostic_handlers(client, fortran_show_warnings)
+            elseif client.name == 'pylsp' then
+                set_standard_diagnostic_handlers(client, python_show_warnings)
+            elseif client.name == 'lua_ls' then
+                set_standard_diagnostic_handlers(client, lua_show_warnings)
+            elseif client.name == 'texlab' then
+                set_standard_diagnostic_handlers(client, tex_show_warnings)
+            elseif client.name == 'ltex' then
+                set_standard_diagnostic_handlers(client, tex_show_warnings)
+            end
         end
 
         -- =========================================
@@ -217,6 +256,7 @@ return {
                 },
             },
         })
+
         -- =========================================
         --  LSP Server Setting for LaTeX
         -- =========================================
@@ -271,33 +311,33 @@ return {
             'ltex',
         })
 
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = { 'fortran' },
-            callback = function(args)
-                set_fortran_diagnostic_handlers(args.buf, fortran_show_warnings)
-            end,
-        })
+        -- vim.api.nvim_create_autocmd('FileType', {
+        --     pattern = { 'fortran' },
+        --     callback = function(args)
+        --         set_standard_diagnostic_handlers(args.buf, fortran_show_warnings)
+        --     end,
+        -- })
 
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = { 'python' },
-            callback = function(args)
-                set_python_diagnostic_handlers(args.buf, python_show_warnings)
-            end,
-        })
+        -- vim.api.nvim_create_autocmd('FileType', {
+        --     pattern = { 'python' },
+        --     callback = function(args)
+        --         set_standard_diagnostic_handlers(args.buf, python_show_warnings)
+        --     end,
+        -- })
 
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = { 'lua' },
-            callback = function(args)
-                set_lua_diagnostic_handlers(args.buf, lua_show_warnings)
-            end,
-        })
+        -- vim.api.nvim_create_autocmd('FileType', {
+        --     pattern = { 'lua' },
+        --     callback = function(args)
+        --         set_standard_diagnostic_handlers(args.buf, lua_show_warnings)
+        --     end,
+        -- })
 
-        vim.api.nvim_create_autocmd('FileType', {
-            pattern = { 'tex', 'plaintex', 'bib' },
-            callback = function(args)
-                set_tex_diagnostic_handlers(args.buf, tex_show_warnings)
-            end,
-        })
+        -- vim.api.nvim_create_autocmd('FileType', {
+        --     pattern = { 'tex', 'plaintex', 'bib' },
+        --     callback = function(args)
+        --         set_standard_diagnostic_handlers(args.buf, tex_show_warnings)
+        --     end,
+        -- })
     end,
 }
 
