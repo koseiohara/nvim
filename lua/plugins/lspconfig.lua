@@ -4,9 +4,10 @@ return {
  
     config = function()
 
-        local tex_show_warnings     = false
         local fortran_show_warnings = false
         local python_show_warnings  = false
+        local lua_show_warnings     = false
+        local tex_show_warnings     = false
 
         vim.keymap.set('i', '<C-n>', '<Nop>', { silent = true })
         vim.keymap.set('i', '<C-p>', '<Nop>', { silent = true })
@@ -31,6 +32,14 @@ return {
         end
 
         local function set_python_diagnostic_handlers(bufnr, show_warnings)
+            local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
+            vim.diagnostic.config({
+                underline = { severity = { min = min } },
+                signs     = { severity = { min = min } },
+            }, bufnr)
+        end
+
+        local function set_lua_diagnostic_handlers(bufnr, show_warnings)
             local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
             vim.diagnostic.config({
                 underline = { severity = { min = min } },
@@ -81,15 +90,19 @@ return {
         --  Root Directory
         -- =========================================
         local function fortran_root(fname)
-            return vim.fs.root(fname, { '.git', 'Makefile' })
+            return vim.fs.root(fname, { '.git', 'Makefile' }) or vim.fs.dirname(fname)
         end
 
         local function python_root(fname)
-            return vim.fs.root(fname, { 'pyproject.toml', 'pyrightconfig.json', '.git' })
+            return vim.fs.root(fname, { 'pyproject.toml', 'pyrightconfig.json', '.git' }) or vim.fs.dirname(fname)
+        end
+
+        local function lua_root(fname)
+            return vim.fs.root(fname, { '.luarc.json', '.luarc.jsonc', '.git' }) or vim.fs.dirname(fname)
         end
 
         local function tex_root(fname)
-            return vim.fs.root(fname, { '.latexmkrc', '.git' })
+            return vim.fs.root(fname, { '.latexmkrc', '.git' }) or vim.fs.dirname(fname)
         end
 
         -- =========================================
@@ -181,6 +194,30 @@ return {
         })
 
         -- =========================================
+        --  LSP Server Setting for Lua
+        -- =========================================
+        vim.lsp.config('lua_ls', {
+            on_attach = on_attach,
+            filetypes = { 'lua' },
+            root_dir  = lua_root,
+
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        -- Lua for neovim setting
+                        globals = { 'vim' },
+                    },
+                    workspace = {
+                        library = vim.api.nvim_get_runtime_file('', true),
+                        checkThirdParty = false,
+                    },
+                    telemetry = {
+                        enable = false,
+                    },
+                },
+            },
+        })
+        -- =========================================
         --  LSP Server Setting for LaTeX
         -- =========================================
         vim.lsp.config('texlab', {
@@ -229,6 +266,7 @@ return {
         vim.lsp.enable({
             'fortls',
             'pylsp',
+            'lua_ls',
             'texlab',
             'ltex',
         })
@@ -244,6 +282,13 @@ return {
             pattern = { 'python' },
             callback = function(args)
                 set_python_diagnostic_handlers(args.buf, python_show_warnings)
+            end,
+        })
+
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = { 'lua' },
+            callback = function(args)
+                set_lua_diagnostic_handlers(args.buf, lua_show_warnings)
             end,
         })
 

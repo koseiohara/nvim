@@ -13,6 +13,7 @@ return {
             ensure_installed = {
                 'fortls',
                 'pylsp',
+                'lua_ls',
                 'texlab',
                 'ltex',
             },
