@@ -51,38 +51,6 @@ return {
             vim.diagnostic.config(opts, ns)
         end
 
-        -- local function set_fortran_diagnostic_handlers(bufnr, show_warnings)
-        --     local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
-        --     vim.diagnostic.config({
-        --         underline = { severity = { min = min } },
-        --         signs     = { severity = { min = min } },
-        --     }, bufnr)
-        -- end
-
-        -- local function set_python_diagnostic_handlers(bufnr, show_warnings)
-        --     local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
-        --     vim.diagnostic.config({
-        --         underline = { severity = { min = min } },
-        --         signs     = { severity = { min = min } },
-        --     }, bufnr)
-        -- end
-
-        -- local function set_lua_diagnostic_handlers(bufnr, show_warnings)
-        --     local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
-        --     vim.diagnostic.config({
-        --         underline = { severity = { min = min } },
-        --         signs     = { severity = { min = min } },
-        --     }, bufnr)
-        -- end
-
-        -- local function set_tex_diagnostic_handlers(bufnr, show_warnings)
-        --     local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
-        --     vim.diagnostic.config({
-        --         underline = { severity = { min = min } },
-        --         signs     = { severity = { min = min } },
-        --     }, bufnr)
-        -- end
-
         -- =========================================
         --  Global toggles (language-agnostic)
         -- =========================================
@@ -155,6 +123,7 @@ return {
         -- =========================================
         --  LSP Server Setting for Fortran
         -- =========================================
+        local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
         vim.lsp.config('fortls', {
             cmd = {
                 mason_bin .. "/fortls",
@@ -328,33 +297,6 @@ return {
             'ltex',
         })
 
-        -- vim.api.nvim_create_autocmd('FileType', {
-        --     pattern = { 'fortran' },
-        --     callback = function(args)
-        --         set_standard_diagnostic_handlers(args.buf, fortran_show_warnings)
-        --     end,
-        -- })
-
-        -- vim.api.nvim_create_autocmd('FileType', {
-        --     pattern = { 'python' },
-        --     callback = function(args)
-        --         set_standard_diagnostic_handlers(args.buf, python_show_warnings)
-        --     end,
-        -- })
-
-        -- vim.api.nvim_create_autocmd('FileType', {
-        --     pattern = { 'lua' },
-        --     callback = function(args)
-        --         set_standard_diagnostic_handlers(args.buf, lua_show_warnings)
-        --     end,
-        -- })
-
-        -- vim.api.nvim_create_autocmd('FileType', {
-        --     pattern = { 'tex', 'plaintex', 'bib' },
-        --     callback = function(args)
-        --         set_standard_diagnostic_handlers(args.buf, tex_show_warnings)
-        --     end,
-        -- })
     end,
 }
 
