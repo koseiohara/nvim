@@ -1,4 +1,6 @@
 
+-- Note
+-- node is needed to install pyright
 
 return {
     'neovim/nvim-lspconfig',
@@ -23,7 +25,7 @@ return {
         -- =========================================
         --  Diagnostic Threshold
         -- =========================================
-        local function set_tex_diagnostic_handlers(bufnr, show_warnings)
+        local function set_fortran_diagnostic_handlers(bufnr, show_warnings)
             local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
             vim.diagnostic.config({
                 underline = { severity = { min = min } },
@@ -31,7 +33,15 @@ return {
             }, bufnr)
         end
 
-        local function set_fortran_diagnostic_handlers(bufnr, show_warnings)
+        local function set_python_diagnostic_handlers(bufnr, show_warnings)
+            local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
+            vim.diagnostic.config({
+                underline = { severity = { min = min } },
+                signs     = { severity = { min = min } },
+            }, bufnr)
+        end
+
+        local function set_tex_diagnostic_handlers(bufnr, show_warnings)
             local min = show_warnings and vim.diagnostic.severity.WARN or vim.diagnostic.severity.ERROR
             vim.diagnostic.config({
                 underline = { severity = { min = min } },
@@ -73,12 +83,16 @@ return {
         -- =========================================
         --  Root Directory
         -- =========================================
-        local function tex_root(fname)
-            return vim.fs.root(fname, { '.latexmkrc', '.git' })
-        end
-
         local function fortran_root(fname)
             return vim.fs.root(fname, { '.git', 'Makefile' })
+        end
+
+        local function python_root(fname)
+            return vim.fs.root(fname, { "pyrightconfig.json", "pyproject.toml", ".git" })
+        end
+
+        local function tex_root(fname)
+            return vim.fs.root(fname, { '.latexmkrc', '.git' })
         end
 
         -- =========================================
@@ -91,6 +105,20 @@ return {
 
             settings = {
                 fortls = {
+                },
+            },
+        })
+
+        -- =========================================
+        --  LSP Server Setting for Python
+        -- =========================================
+        vim.lsp.config('pyright', {
+            on_attach = on_attach,
+            filetypes = { 'python' },
+            root_dir  = python_root,
+
+            settings = {
+                pyright = {
                 },
             },
         })
@@ -143,6 +171,7 @@ return {
 
         vim.lsp.enable({
             'fortls',
+            'pyright',
             'texlab',
             'ltex',
         })
@@ -150,7 +179,14 @@ return {
         vim.api.nvim_create_autocmd('FileType', {
             pattern = { 'fortran' },
             callback = function(args)
-                set_fortran_diagnostic_handlers(args.buf, tex_show_warnings)
+                set_fortran_diagnostic_handlers(args.buf, fortran_show_warnings)
+            end,
+        })
+
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = { 'python' },
+            callback = function(args)
+                set_python_diagnostic_handlers(args.buf, python_show_warnings)
             end,
         })
 

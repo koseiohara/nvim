@@ -11,9 +11,10 @@ return {
         dependencies = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
         opts = {
             ensure_installed = {
+                'fortls',
+                'pyright',
                 'texlab',
                 'ltex',
-                'fortls',
             },
             automatic_installation = true,
         },
