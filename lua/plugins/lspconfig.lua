@@ -128,7 +128,15 @@ return {
         -- =========================================
         --  Root Directory
         -- =========================================
-        local function fortran_root(fname)
+        local function root_maker(flags)
+            return function(bufnr, on_dir)
+                local fname = vim.api.nvim_buf_get_name(bufnr)
+                local root = vim.fs.root(fname, flags) or vim.fs.dirname(fname)
+                on_dir(root)
+            end
+        end
+
+        local function fortran_root(bufnr, fname)
             return vim.fs.root(fname, { '.git', 'Makefile' }) or vim.fs.dirname(fname)
         end
 
@@ -150,7 +158,7 @@ return {
         vim.lsp.config('fortls', {
             on_attach = on_attach,
             filetypes = { 'fortran' },
-            root_dir  = fortran_root,
+            root_dir  = root_maker({ '.git', 'Makefile' }),
 
             settings = {
                 fortls = {
@@ -164,7 +172,7 @@ return {
         vim.lsp.config('pylsp', {
             on_attach = on_attach,
             filetypes = { 'python' },
-            root_dir  = python_root,
+            root_dir  = root_maker({ 'pyproject.toml', 'pyrightconfig.json', '.git' }),
 
             settings = {
                 pylsp = {
@@ -238,7 +246,7 @@ return {
         vim.lsp.config('lua_ls', {
             on_attach = on_attach,
             filetypes = { 'lua' },
-            root_dir  = lua_root,
+            root_dir  = root_maker({ '.luarc.json', '.luarc.jsonc', '.git' }),
 
             settings = {
                 Lua = {
@@ -263,7 +271,7 @@ return {
         vim.lsp.config('texlab', {
             on_attach = on_attach,
             filetypes = { 'tex', 'plaintex', 'bib' },
-            root_dir = tex_root,
+            root_dir = root_maker({ '.latexmkrc', '.git' }),
             settings = {
                 texlab = {
                     build = {
@@ -292,7 +300,7 @@ return {
         vim.lsp.config('ltex', {
             on_attach = on_attach,
             filetypes = { 'tex', 'plaintex', 'bib' },
-            root_dir = tex_root,
+            root_dir = root_maker({ '.latexmkrc', '.git' }),
             settings = {
                 ltex = {
                     language = 'en-US',
