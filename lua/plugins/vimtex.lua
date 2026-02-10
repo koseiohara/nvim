@@ -1,35 +1,35 @@
 -- Settings in Skim:
 -- Sync:
 --     Command: nvim
---     Argument: --headless -c "VimtexInverseSearch %line '%file'"
+--     Argument: --headless -c 'VimtexInverseSearch %line '%file''
 
 return {
     'lervag/vimtex',
     lazy = false,
     init = function()
-        if vim.fn.has("macunix") ~= 1 then
+        if vim.fn.has('macunix') ~= 1 then
             return
         end
-        vim.g.vimtex_view_method     = "skim"
-        vim.g.vimtex_compiler_method = "latexmk"
+        vim.g.vimtex_view_method     = 'skim'
+        vim.g.vimtex_compiler_method = 'latexmk'
         vim.g.vimtex_quickfix_mode   = 2
         vim.g.vimtex_quickfix_open_on_warning = 0
 
         vim.g.vimtex_compiler_latexmk = {
             options = {
-                "-pdfdvi",
+                '-pdfdvi',
             },
         }
 
-        vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-            pattern = "*.cls",
+        vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+            pattern = '*.cls',
             callback = function()
-                vim.bo.filetype = "tex"
+                vim.bo.filetype = 'tex'
             end,
         })
 
-        local TEMPLATE = vim.fn.expand("~/.config/nvim/tools/.latexmkrc")
-        local RC_NAME = ".latexmkrc"
+        local TEMPLATE = vim.fn.expand('~/.config/nvim/tools/.latexmkrc')
+        local RC_NAME = '.latexmkrc'
 
         local function stat(path)
             return vim.uv.fs_stat(path) ~= nil
@@ -37,19 +37,19 @@ return {
 
         local function vimtex_main_root(buf)
             local b = vim.b[buf]
-            if type(b) ~= "table" then
+            if type(b) ~= 'table' then
                 return nil, nil
             end
             local v = b.vimtex
-            if type(v) ~= "table" then
+            if type(v) ~= 'table' then
                 return nil, nil
             end
             local root = v.root
             local main = v.tex
-            if type(root) ~= "string" or root == "" then
+            if type(root) ~= 'string' or root == '' then
                 return nil, nil
             end
-            if type(main) ~= "string" or main == "" then
+            if type(main) ~= 'string' or main == '' then
                 return nil, nil
             end
             if not stat(main) then
@@ -70,12 +70,12 @@ return {
                 return
             end
 
-            local dst = root .. "/" .. RC_NAME
+            local dst = root .. '/' .. RC_NAME
             if stat(dst) then
                 return
             end
 
-            local fd_in = vim.uv.fs_open(TEMPLATE, "r", 0)
+            local fd_in = vim.uv.fs_open(TEMPLATE, 'r', 0)
             if not fd_in then
                 return
             end
@@ -93,7 +93,7 @@ return {
             --     )
             -- )
 
-            local fd_out = vim.uv.fs_open(dst, "wx", 420)
+            local fd_out = vim.uv.fs_open(dst, 'wx', 420)
             if not fd_out then
                 return
             end
@@ -102,42 +102,35 @@ return {
         end
 
 
-        -- Open Skim Automatically
-        local function open_pdf()
-            if vim.fn.exists(":VimtexView") == 2 then
-                vim.cmd("VimtexView")
-            end
-        end
-
         local function compile()
             ensure_rc_for_current_buf()
 
-            if vim.fn.exists(":VimtexCompileSS") == 2 then
-                vim.cmd("VimtexCompileSS")
-            elseif vim.fn.exists(":VimtexCompile") == 2 then
-                vim.cmd("VimtexCompile")
+            if vim.fn.exists(':VimtexCompileSS') == 2 then
+                vim.cmd('VimtexCompileSS')
+            elseif vim.fn.exists(':VimtexCompile') == 2 then
+                vim.cmd('VimtexCompile')
             end
         end
 
-        local group = vim.api.nvim_create_augroup("tex_file", { clear = true })
+        local group = vim.api.nvim_create_augroup('tex_file', { clear = true })
 
 
         -- Override <localleader>ll to copy .latexmkrc
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = "tex",
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = 'tex',
             callback = function(args)
                 -- vimtex が有効なときだけ上書き
                 if vim.b[args.buf].vimtex then
                     vim.keymap.set(
-                        "n",
-                        "<localleader>ll",
+                        'n',
+                        '<localleader>ll',
                         function()
                             compile()
                         end,
                         {
                             buffer = args.buf,
                             silent = true,
-                            desc = "VimTeX (wrapped): compile with rc-copy check",
+                            desc = 'VimTeX (wrapped): compile with rc-copy check',
                         }
                     )
                 end
@@ -146,7 +139,7 @@ return {
 
         -- Check whether vim is being closed
         local vimtex_exiting = false
-        vim.api.nvim_create_autocmd({"VimLeavePre" }, {
+        vim.api.nvim_create_autocmd({'VimLeavePre' }, {
             group = group,
             callback = function()
                 vimtex_exiting = true
@@ -154,9 +147,9 @@ return {
         })
         
         -- auto compiler (only if vim is not being closed)
-        vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+        vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
             group = group,
-            pattern = { "*.tex", "*.cls" },
+            pattern = { '*.tex', '*.cls' },
             callback = function()
                 if vimtex_exiting then
                     return
@@ -168,17 +161,23 @@ return {
         })
 
         -- Error Message Window
-        vim.keymap.set("n", "<localleader>le", function()
-            -- Close if quickfix is open
-            for _, win in ipairs(vim.fn.getwininfo()) do
-                if win.quickfix == 1 then
-                    vim.cmd("cclose")
-                    return
-                end
-            end
-            -- Open quickfix
-            vim.cmd("VimtexErrors")
-        end, { buffer = false, silent = true, desc = "Toggle VimTeX errors" })
+        vim.api.nvim_create_autocmd('FileType', {
+            group = group,
+            pattern = { 'tex', 'plaintex' },
+            callback = function(args)
+                vim.keymap.set('n', '<localleader>le', function()
+                    -- Close if quickfix is open
+                    for _, win in ipairs(vim.fn.getwininfo()) do
+                        if win.quickfix == 1 then
+                            vim.cmd('cclose')
+                            return
+                        end
+                    end
+                    -- Open quickfix
+                    vim.cmd('VimtexErrors')
+                end, { buffer = false, silent = true, desc = 'Toggle VimTeX errors' })
+            end,
+        })
 
     end,
 }
