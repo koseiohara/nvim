@@ -11,6 +11,7 @@ vim.g.maplocalleader         = " "
 -- vim.g.maplocalleader = "\\"
 
 require('config.is_big_file')
+require('config.ime_control')
 require('config.linenumber')
 require('config.keymap')
 require('config.viewoption')
