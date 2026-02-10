@@ -156,6 +156,15 @@ return {
         --  LSP Server Setting for Fortran
         -- =========================================
         vim.lsp.config('fortls', {
+            cmd = {
+                mason_bin .. "/fortls",
+                "--debug_log",
+                "--disable_autoupdate",
+                "--notify_init",
+                "--hover_signature",
+                "--hover_language=fortran",
+                "--use_signature_help",
+            },
             on_attach = on_attach,
             filetypes = { 'fortran' },
             root_dir  = root_maker({ '.git', 'Makefile' }),
