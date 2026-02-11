@@ -44,8 +44,8 @@ return {
             end,{})
 
             vim.keymap.set('n', '<leader>tt', '<cmd>Tterm<CR>', {silent = true})
-            vim.keymap.set('n', '<leader>vt', '<cmd>Vterm<CR>', {silent = true})
-            vim.keymap.set('n', '<leader>ht', '<cmd>Hterm<CR>', {silent = true})
+            vim.keymap.set('n', '<leader>tv', '<cmd>Vterm<CR>', {silent = true})
+            vim.keymap.set('n', '<leader>th', '<cmd>Hterm<CR>', {silent = true})
 
             vim.keymap.set('t', '<ESC>', [[<C-\><C-n>]], { silent = true })
             vim.keymap.set('t', 'kj'   , [[<C-\><C-n>]], { silent = true })

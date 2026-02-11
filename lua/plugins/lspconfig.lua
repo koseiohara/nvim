@@ -1,7 +1,7 @@
 
 return {
     'neovim/nvim-lspconfig',
- 
+
     config = function()
 
         local fortran_show_warnings = false
@@ -123,10 +123,10 @@ return {
 
         do
             local orig = vim.lsp.handlers["window/showMessage"]
-        
+
             vim.lsp.handlers["window/showMessage"] = function(err, result, ctx, config)
                 local client = vim.lsp.get_client_by_id(ctx.client_id)
-        
+
                 if client and client.name == "fortls" and result then
                     if result.type == vim.lsp.protocol.MessageType.Info then
                         return
@@ -143,7 +143,7 @@ return {
                     --     return
                     -- end
                 end
-        
+
                 return orig(err, result, ctx, config)
             end
         end

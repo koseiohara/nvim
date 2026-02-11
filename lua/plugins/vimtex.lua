@@ -7,10 +7,19 @@ return {
     'lervag/vimtex',
     lazy = false,
     init = function()
-        if vim.fn.has('macunix') ~= 1 then
-            return
+        -- if vim.fn.has('macunix') ~= 1 then
+        --     return
+        -- end
+        -- vim.g.vimtex_view_method     = 'skim'
+
+        if vim.fn.has('macunix') == 1 then
+            vim.g.vimtex_view_method = 'skim'
+        elseif vim.fn.has('win32') == 1 then
+            vim.g.vimtex_view_method = 'sumatrapdf'
+        elseif vim.fn.has('unix') == 1 then
+            vim.g.vimtex_view_method = 'zathura'
         end
-        vim.g.vimtex_view_method     = 'skim'
+
         vim.g.vimtex_compiler_method = 'latexmk'
         vim.g.vimtex_quickfix_mode   = 2
         vim.g.vimtex_quickfix_open_on_warning = 0
@@ -145,7 +154,7 @@ return {
                 vimtex_exiting = true
             end,
         })
-        
+
         -- auto compiler (only if vim is not being closed)
         vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
             group = group,
