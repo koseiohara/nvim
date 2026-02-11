@@ -85,35 +85,35 @@ It will automatically install all plugins listed below.
 Plugin list can be displayed with command `:Lazy`.  
 In this document, descriptions of key bindings that are the same as the plugin defaults are omitted.
 
-### nvim-web-devicons <a href="https://github.com/nvim-tree/nvim-web-devicons.git">nvim-tree/nvim-web-devicons</a>  
+### nvim-web-devicons (<a href="https://github.com/nvim-tree/nvim-web-devicons.git">nvim-tree/nvim-web-devicons</a>)  
 
-### mini.icons <a href="https://github.com/nvim-mini/mini.icons.git">nvim-mini/mini.icons</a>  
+### mini.icons (<a href="https://github.com/nvim-mini/mini.icons.git">nvim-mini/mini.icons</a>)  
 Some icons may not render correctly in certain terminal emulators, including Terminal.app on macOS.
 
-### gitsigns.nvim <a href="https://github.com/lewis6991/gitsigns.nvim.git">lewis6991/gitsigns.nvim</a>  
+### gitsigns.nvim (<a href="https://github.com/lewis6991/gitsigns.nvim.git">lewis6991/gitsigns.nvim</a>)  
 
-### barbar.nvim <a href="https://github.com/romgrk/barbar.nvim.git">romgrk/barbar.nvim</a>  
+### barbar.nvim (<a href="https://github.com/romgrk/barbar.nvim.git">romgrk/barbar.nvim</a>)  
 
-### vim-commentary <a href="https://github.com/tpope/vim-commentary.git">tpope/vim-commentary</a>  
+### vim-commentary (<a href="https://github.com/tpope/vim-commentary.git">tpope/vim-commentary</a>)  
 
-### hlchunk.nvim <a href="https://github.com/shellRaining/hlchunk.nvim.git">shellRaining/hlchunk.nvim</a>  
+### hlchunk.nvim (<a href="https://github.com/shellRaining/hlchunk.nvim.git">shellRaining/hlchunk.nvim</a>)  
 
-### lualine.nvim <a href="https://github.com/nvim-lualine/lualine.nvim.git">nvim-lualine/lualine.nvim</a>  
+### lualine.nvim (<a href="https://github.com/nvim-lualine/lualine.nvim.git">nvim-lualine/lualine.nvim</a>)  
 
-### mason.nvim <a href="https://github.com/mason-org/mason.nvim.git">mason-org/mason.nvim</a>  
+### mason.nvim (<a href="https://github.com/mason-org/mason.nvim.git">mason-org/mason.nvim</a>)  
 `ltex`, `texlab`, `fortls`, `pylsp`, and `lua_ls` will be installed.
 
-### mason-lspconfig.nvim <a href="https://github.com/mason-org/mason-lspconfig.nvim.git">mason-org/mason-lspconfig.nvim</a>  
+### mason-lspconfig.nvim (<a href="https://github.com/mason-org/mason-lspconfig.nvim.git">mason-org/mason-lspconfig.nvim</a>)  
 
-### nvim-lspconfig <a href="https://github.com/neovim/nvim-lspconfig.git">neovim/nvim-lspconfig</a>  
+### nvim-lspconfig (<a href="https://github.com/neovim/nvim-lspconfig.git">neovim/nvim-lspconfig</a>)  
 This repository comes with the following Language Server Protocol (LSP) servers installed: `ltex`, `texlab`, `fortls`, `pylsp`, and `lua_ls`.
 They will provide highlighting, virtual text annotations, and signs in the statuscolumn for syntax errors.
 Hovers, auto-completion, and code-action are intentionally disabled to avoid disrupting focus.
 If certain English words are incorrectly flagged as spelling mistakes by ltex, add them to `$HOME/.config/ltex/dictionary.en-US.txt`.
 
-### nvim-surroud <a href="https://github.com/kylechui/nvim-surround.git">kylechui/nvim-surround</a>  
+### nvim-surroud (<a href="https://github.com/kylechui/nvim-surround.git">kylechui/nvim-surround</a>)  
 
-### oil.nvim <a href="https://github.com/stevearc/oil.nvim.git">stevearc/oil.nvim</a>  
+### oil.nvim (<a href="https://github.com/stevearc/oil.nvim.git">stevearc/oil.nvim</a>)  
 Newly defined key bindings
 | Key | Action | Description |
 |-----|--------|-------------|
@@ -124,11 +124,11 @@ Newly defined key bindings
 | `<CR>` |  | open selected file in a new tab, or move to the directory if a directory is selected |
 | `<leader>e` | | open/close oil window |
 
-### plenary.nvim <a href="https://github.com/nvim-lua/plenary.nvim.git">nvim-lua/plenary.nvim</a>  
+### plenary.nvim (<a href="https://github.com/nvim-lua/plenary.nvim.git">nvim-lua/plenary.nvim</a>)  
 
-### telescope-fzf-native.nvim <a href="https://github.com/nvim-telescope/telescope-fzf-native.nvim.git">nvim-telescope/telescope-fzf-native.nvim</a>  
+### telescope-fzf-native.nvim (<a href="https://github.com/nvim-telescope/telescope-fzf-native.nvim.git">nvim-telescope/telescope-fzf-native.nvim</a>)  
 
-### telescope.nvim <a href="https://github.com/nvim-telescope/telescope.nvim.git">nvim-telescope/telescope.nvim</a>  
+### telescope.nvim (<a href="https://github.com/nvim-telescope/telescope.nvim.git">nvim-telescope/telescope.nvim</a>)  
 Descriptions follow these of <a href="https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#pickers">official GitHub repository</a>.  
 Key bindings
 | Key | Description |
@@ -143,7 +143,7 @@ Key bindings
 
 `<leader>fg` command needs <a href="https://github.com/BurntSushi/ripgrep.git">ripgrep</a>.
 
-### toggleterm.nvim <a href="https://github.com/akinsho/toggleterm.nvim.git">akinsho/toggleterm.nvim</a>  
+### toggleterm.nvim (<a href="https://github.com/akinsho/toggleterm.nvim.git">akinsho/toggleterm.nvim</a>)  
 Key bindings
 | Key | Description |
 |-----|-------------|
@@ -151,7 +151,7 @@ Key bindings
 | `<leader>tv` | open terminal in a new vertical split |
 | `<leader>th` | open terminal in a new horizontal split |
 
-### vimtex <a href="https://github.com/lervag/vimtex.git">lervag/vimtex</a>  
+### vimtex (<a href="https://github.com/lervag/vimtex.git">lervag/vimtex</a>)  
 To edit latex source code using vimtex, install Skim on macOS, SumatraPDF on Windows, and Zathura on Linux.
 Also, `latexmk` is needed to compile source codes.  
 Key bindings
