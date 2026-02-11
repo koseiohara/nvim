@@ -72,7 +72,8 @@ They can be reset in `init.lua` by yourself.
 
 ## Plugins
 In this toolkit, <a href="https://github.com/folke/lazy.nvim.git">lazy.nvim</a> is used as the package manager.
-Plugin list can be displayed with command `:Lazy`.
+Plugin list can be displayed with command `:Lazy`.  
+Descriptions of key bindings that are the same as the plugin defaults are omitted.
 
 ### gitsigns.nvim
 <a href="https://github.com/lewis6991/gitsigns.nvim.git">lewis6991/gitsigns.nvim</a>  
@@ -165,7 +166,8 @@ Key bindings
 
 The automatically generated `.latexmkrc` is a copy of `tools/.latexmkrc`.
 To change the compile method, edit the original `tools/.latexmkrc`.
-
+#### NOTE
+Settings have not been tested on Windows and Linux.
 
 
 
