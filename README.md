@@ -4,12 +4,20 @@ This environment depends on various plugins, including a plugin manager.
 Simply clone this repository into `$HOME/.config/` after neovim is built.  
 All files in this repository cannot be used with vim.
 
-## Key Bindings
-Key bindings are written in `nvim/lua/config/leymap.lua`.  
+- [Key Bindings](#key-bindings)
+    - [Normal Mode](#normal-mode)
+    - [Insert Mode](#insert-mode)
+    - [Commands](#commands)
+    - [Abbreviations](#abb)
+- [Plugins](#plugins)
+
+
+## Key Bindings<a id="key-bindigs"></a>
+Key bindings are written in `nvim/lua/config/keymap.lua`.  
 Both `<leader>` and `<localleader>` are set as `<space>`.
 They can be reset in `init.lua` by yourself.
 
-### Normal Mode
+### Normal Mode<a id="normal-mode"></a>
 | Key | Action | Description |
 |-----|--------|-------------|
 | `gh` | `^` | move to first non-blank character in the line |
@@ -44,23 +52,23 @@ They can be reset in `init.lua` by yourself.
 | `<down>` | `<C-w>-` | decrease window height |
 | `<up>` | `<C-w>+` | increase window height |
 
-### Insert Mode
+### Insert Mode<a id="insert-mode"></a>
 | Key | Action | Description |
 |-----|--------|-------------|
 | `kj`/`Kj`/`KJ` | `<Esc>` | return to normal mode |
 
-### Visual Mode
+### Visual Mode<a id="visual-mode"></a>
 | Key | Action | Description |
 |-----|--------|-------------|
 | `<` | `<gv` | decrease indent |
 | `>` | `>gv` | increase indent |
 
-### Commands
+### Commands<a id="commands"></a>
 | Command | Description |
 |---------|-------------|
 | `:rpl` | replace all highlighted matches with a new word |
 
-### Abbreviations
+### Abbreviations<a id="abb"></a>
 | Abbreviation | File Type | Inserted Text | 
 |--------------|-----------|---------------|
 | `;;r` | fortran | `real` |
@@ -70,16 +78,19 @@ They can be reset in `init.lua` by yourself.
 
 
 
-## Plugins
+## Plugins<a id="plugins"></a>
 In this toolkit, <a href="https://github.com/folke/lazy.nvim.git">lazy.nvim</a> is used as the package manager.
 Plugin list can be displayed with command `:Lazy`.  
-Descriptions of key bindings that are the same as the plugin defaults are omitted.
+In this document, descriptions of key bindings that are the same as the plugin defaults are omitted.
 
-### gitsigns.nvim
-<a href="https://github.com/lewis6991/gitsigns.nvim.git">lewis6991/gitsigns.nvim</a>  
+### nvim-web-devicons
+<a href="https://github.com/nvim-tree/nvim-web-devicons.git">nvim-tree/nvim-web-devicons</a>  
 
 ### mini.icons
 <a href="https://github.com/nvim-mini/mini.icons.git">nvim-mini/mini.icons</a>  
+
+### gitsigns.nvim
+<a href="https://github.com/lewis6991/gitsigns.nvim.git">lewis6991/gitsigns.nvim</a>  
 
 ### barbar.nvim
 <a href="https://github.com/romgrk/barbar.nvim.git">romgrk/barbar.nvim</a>  
@@ -109,9 +120,6 @@ If certain English words are incorrectly flagged as spelling mistakes by ltex, a
 
 ### nvim-surroud
 <a href="https://github.com/kylechui/nvim-surround.git">kylechui/nvim-surround</a>  
-
-### nvim-web-devicons
-<a href="https://github.com/nvim-tree/nvim-web-devicons.git">nvim-tree/nvim-web-devicons</a>  
 
 ### oil.nvim
 <a href="https://github.com/stevearc/oil.nvim.git">stevearc/oil.nvim</a>  
@@ -145,6 +153,8 @@ Key bindings
 | `<leader>gc` | lists git commits with diff preview |
 | `<leader>gs` | lists current changes per file with diff preview and add action |
 
+`<leader>fg` command needs <a href="https://github.com/BurntSushi/ripgrep.git">ripgrep</a>.
+
 ### toggleterm.nvim
 <a href="https://github.com/akinsho/toggleterm.nvim.git">akinsho/toggleterm.nvim</a>  
 Key bindings
@@ -163,11 +173,13 @@ Key bindings
 |-----|-------------|
 | `<localleader>ll` | compile souce. if `.latexmkrc` is not in the same directory as the main file, it will be generated automatically |
 | `:w` | same as `<localleader>ll`, but file is saved first |
+| `<localleader>le` | open/close error window |
 
 The automatically generated `.latexmkrc` is a copy of `tools/.latexmkrc`.
 To change the compile method, edit the original `tools/.latexmkrc`.
+
 #### NOTE
-Settings have not been tested on Windows and Linux.
+- VimTex's settings have not been tested on Windows and Linux.
 
 
 
