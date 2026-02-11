@@ -43,20 +43,17 @@ They can be reset in `init.lua` by yourself.
 | `<left>` | `<C-w>>` | increase window width |
 | `<down>` | `<C-w>-` | decrease window height |
 | `<up>` | `<C-w>+` | increase window height |
-|-----|--------|-------------|
 
 ### Insert Mode
 | Key | Action | Description |
 |-----|--------|-------------|
 | `kj`/`Kj`/`KJ` | `<Esc>` | return to normal mode |
-|-----|--------|-------------|
 
 ### Visual Mode
 | Key | Action | Description |
 |-----|--------|-------------|
 | `<` | `<gv` | decrease indent |
 | `>` | `>gv` | increase indent |
-|-----|--------|-------------|
 
 
 
