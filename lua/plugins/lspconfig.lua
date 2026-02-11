@@ -8,6 +8,7 @@ return {
         local python_show_warnings  = false
         local lua_show_warnings     = false
         local tex_show_warnings     = false
+        local ltex_show_warnings    = true
 
         vim.keymap.set('i', '<C-n>', '<Nop>', { silent = true })
         vim.keymap.set('i', '<C-p>', '<Nop>', { silent = true })
@@ -89,7 +90,7 @@ return {
             elseif client.name == 'texlab' then
                 set_standard_diagnostic_handlers(client, tex_show_warnings)
             elseif client.name == 'ltex' then
-                set_standard_diagnostic_handlers(client, tex_show_warnings)
+                set_standard_diagnostic_handlers(client, ltex_show_warnings)
             end
         end
 
@@ -307,13 +308,37 @@ return {
             on_attach = on_attach,
             filetypes = { 'tex', 'plaintex', 'bib' },
             root_dir = root_maker({ '.latexmkrc', '.git' }),
-            settings = {
-                ltex = {
+            settings = (function()
+                local uv = vim.uv or vim.loop
+
+                local function dict_exist(filename)
+                    filename = vim.fn.expand(filename)
+                    return uv.fs_stat(filename) and filename or nil
+                end
+
+                local en_dict = dict_exist('~/.config/ltex/dictionary.en-US.txt')
+                -- local ja_dict = dict_exist('~/.config/ltex/dictionary.ja.txt')
+
+                local ltex_settings = {
                     language = 'en-US',
-                    -- dictionary = { ['en-US'] = { 'quasigeostrophic', ... } },
-                    -- disabledRules = { ['en-US'] = { 'MORFOLOGIK_RULE_EN_US' } },
-                },
-            },
+                    -- language = 'en-US,ja',   -- If Japanese dictionary is needed
+                }
+
+                local dict = {}
+                if en_dict then
+                    dict['en-US'] = en_dict
+                end
+
+                -- if ja_dict then
+                --     dict['ja'] = ja_dict
+                -- end
+
+                if next(dict) ~= nil then
+                    ltex_settings.dictionary = dict
+                end
+
+                return {ltex = ltex_settings}
+            end)(),
         })
 
 
