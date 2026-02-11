@@ -55,7 +55,18 @@ They can be reset in `init.lua` by yourself.
 | `<` | `<gv` | decrease indent |
 | `>` | `>gv` | increase indent |
 
+### Commands
+| Command | Description |
+|---------|-------------|
+| `:rpl` | replace all highlighted matches with a new word |
 
+### Abbreviations
+| Abbreviation | File Type | Inserted Text | 
+|--------------|-----------|---------------|
+| `;;r` | fortran | `real` |
+| `;;i` | fortran | `integer` |
+| `;;l` | fortran | `logical` |
+| `;;c` | fortran | `character` |
 
 
 
