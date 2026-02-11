@@ -326,11 +326,15 @@ return {
 
                 local dict = {}
                 if en_dict then
-                    dict['en-US'] = en_dict
+                    dict['en-US'] = {
+                        'nvim',
+                        'neovim',
+                        ':' .. en_dict,
+                    }
                 end
 
                 -- if ja_dict then
-                --     dict['ja'] = ja_dict
+                    -- dict['ja'] = {':' .. ja_dict}
                 -- end
 
                 if next(dict) ~= nil then
