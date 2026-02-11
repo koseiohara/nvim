@@ -30,6 +30,9 @@ return {
             },
         }
 
+        -- vim.g.vimtex_clean_patterns = vim.g.vimtex_clean_patterns or {}
+        -- table.insert(vim.g.vimtex_clean_patterns, '*.bbl-SAVE-ERROR')
+
         vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
             pattern = '*.cls',
             callback = function()
@@ -128,7 +131,7 @@ return {
         vim.api.nvim_create_autocmd('FileType', {
             pattern = 'tex',
             callback = function(args)
-                -- vimtex が有効なときだけ上書き
+                -- only when vimtex is available
                 if vim.b[args.buf].vimtex then
                     vim.keymap.set(
                         'n',
@@ -156,18 +159,24 @@ return {
         })
 
         -- auto compiler (only if vim is not being closed)
-        vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-            group = group,
-            pattern = { '*.tex', '*.cls' },
-            callback = function()
-                if vimtex_exiting then
-                    return
-                end
-                vim.schedule(function()
-                    compile()
-                end)
-            end,
-        })
+        -- vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+        --     group = group,
+        --     pattern = { '*.tex', '*.cls' },
+        --     callback = function()
+        --         local buf = vim.api.nvim_get_current_buf()
+        --         local main, root = vimtex_main_root(buf)
+        --         if not main or not root then
+        --             return
+        --         end
+
+        --         if vimtex_exiting then
+        --             return
+        --         end
+        --         vim.schedule(function()
+        --             compile()
+        --         end)
+        --     end,
+        -- })
 
         -- Error Message Window
         vim.api.nvim_create_autocmd('FileType', {
