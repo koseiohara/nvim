@@ -306,7 +306,7 @@ return {
         -- ==========================================
         vim.lsp.config('ltex', {
             on_attach = on_attach,
-            filetypes = { 'tex', 'plaintex', 'bib' },
+            filetypes = { 'tex', 'plaintex', 'bib', 'markdown' },
             root_dir = root_maker({ '.latexmkrc', '.git' }),
             settings = (function()
                 local uv = vim.uv or vim.loop
