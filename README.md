@@ -105,7 +105,7 @@ Descriptions of key bindings that are the same as the plugin defaults are omitte
 This repository comes with the following Language Server Protocol (LSP) servers installed: `ltex`, `texlab`, `fortls`, `pylsp`, and `lua_ls`.
 They will provide highlighting, virtual text annotations, and signs in the statuscolumn for syntax errors.
 Hovers, auto-completion, and code-action are intentionally disabled to avoid disrupting focus.
-If certain words are incorrectly flagged as spelling mistakes by ltex, add them to `$HOME/.config/ltex/dictionary.en-US.txt`.
+If certain English words are incorrectly flagged as spelling mistakes by ltex, add them to `$HOME/.config/ltex/dictionary.en-US.txt`.
 
 ### nvim-surroud
 <a href="https://github.com/kylechui/nvim-surround.git">kylechui/nvim-surround</a>  
