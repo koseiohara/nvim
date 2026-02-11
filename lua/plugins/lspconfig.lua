@@ -316,6 +316,23 @@ return {
                     return uv.fs_stat(filename) and filename or nil
                 end
 
+                local function read_dict_lines(p)
+                    local ok, lines = pcall(vim.fn.readfile, p)
+                    if not ok or type(lines) ~= "table" then
+                        return {}
+                    end
+
+                    local out = {}
+                    for _, s in ipairs(lines) do
+                        s = (s:gsub("^%s+", ""):gsub("%s+$", ""))
+                        if s ~= "" then
+                            table.insert(out, s)
+                        end
+                    end
+                    return out
+                end
+
+
                 local en_dict = dict_exist('~/.config/ltex/dictionary.en-US.txt')
                 -- local ja_dict = dict_exist('~/.config/ltex/dictionary.ja.txt')
 
@@ -326,15 +343,13 @@ return {
 
                 local dict = {}
                 if en_dict then
-                    dict['en-US'] = {
-                        'nvim',
-                        'neovim',
-                        ':' .. en_dict,
-                    }
+                    dict['en-US'] = {}
+                    vim.list_extend(dict['en-US'], read_dict_lines(en_dict))
                 end
 
                 -- if ja_dict then
-                    -- dict['ja'] = {':' .. ja_dict}
+                --     dict['ja'] = {}
+                --     vim.list_extend(dict['ja'], read_dict_lines(ja_dict))
                 -- end
 
                 if next(dict) ~= nil then
