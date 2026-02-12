@@ -3,7 +3,7 @@
 This environment depends on various plugins, including a plugin manager.  
 Simply clone this repository into `$HOME/.config/` after neovim is built.  
 All files in this repository cannot be used with vim.  
-To fully use tools in this repository, install <a href="https://github.com/BurntSushi/ripgrep.git">ripgrep</a>, <a href="https://github.com/laishulu/macism.git">macism</a> (only on macOS), latexmk, and a suetable PDF viewer depending on your OS.
+To fully use tools in this repository, install <a href="https://github.com/BurntSushi/ripgrep.git">ripgrep</a>, <a fref="https://github.com/tree-sitter/tree-sitter.git">tree-sitter-cli</a>, <a href="https://github.com/laishulu/macism.git">macism</a> (only on macOS), latexmk, and a suetable PDF viewer depending on your OS.
 
 - [Key Bindings](#key-bindings)
     - [Normal Mode](#normal-mode)
@@ -99,6 +99,8 @@ Some icons may not render correctly in certain terminal emulators, including Ter
 ### hlchunk.nvim (<a href="https://github.com/shellRaining/hlchunk.nvim.git">shellRaining/hlchunk.nvim</a>)  
 
 ### lualine.nvim (<a href="https://github.com/nvim-lualine/lualine.nvim.git">nvim-lualine/lualine.nvim</a>)  
+
+### nvim-treesitter (<a href="https://github.com/nvim-treesitter/nvim-treesitter.git">nvim-treesitter/nvim-treesitter</a>)  
 
 ### mason.nvim (<a href="https://github.com/mason-org/mason.nvim.git">mason-org/mason.nvim</a>)  
 `ltex`, `texlab`, `fortls`, `pylsp`, and `lua_ls` will be installed.
