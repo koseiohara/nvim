@@ -21,20 +21,20 @@ return {
         vim.api.nvim_set_hl(0, 'OilBackColor', {
             ctermbg = 234,
             ctermfg = 250,
-            bg = '#1c1c1c',
-            fg = '#bcbcbc',
+            bg = '#202027',
+            fg = '#abbcab',
         })
         vim.api.nvim_set_hl(0, 'OilCursorLine', {
             ctermbg = 237,
             ctermfg = 255,
             bg = '#3a3a3a',
-            fg = '#eeeeee',
+            fg = '#aaee8a',
         })
         vim.api.nvim_set_hl(0, 'OilWinColor', {
             ctermbg = 234,
             ctermfg = 250,
-            bg = '#1c1c1c',
-            fg = '#bcbcbc',
+            bg = '#202027',
+            fg = '#aaff8a',
         })
         vim.opt.splitright = true
         local oil = require('oil')
