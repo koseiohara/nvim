@@ -63,5 +63,9 @@ vim.api.nvim_set_hl(0, 'VertSplit'      , {cterm={}              ,              
 vim.api.nvim_set_hl(0, 'MainWinbarCrumb', {cterm={underline=true}, underline=true, ctermbg=233, bg='#121212', ctermfg=153, fg='#afd7ff'})
 vim.api.nvim_set_hl(0, 'MainWinbarSep'  , {cterm={underline=true}, underline=true, ctermbg=233, bg='#121212', ctermfg=153, fg='#afd7ff'})
 
+vim.api.nvim_set_hl(0, 'DiagnosticError', {fg = '#ac4141'})
+vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextError', {link = 'DiagnosticError'})
+
+-- fvrei{
 
 
