@@ -66,6 +66,5 @@ vim.api.nvim_set_hl(0, 'MainWinbarSep'  , {cterm={underline=true}, underline=tru
 vim.api.nvim_set_hl(0, 'DiagnosticError', {fg = '#ac4141'})
 vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextError', {link = 'DiagnosticError'})
 
--- fvrei{
 
 
