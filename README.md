@@ -102,6 +102,8 @@ Some icons may not render correctly in certain terminal emulators, including Ter
 
 ### nvim-treesitter (<a href="https://github.com/nvim-treesitter/nvim-treesitter.git">nvim-treesitter/nvim-treesitter</a>)  
 
+### nvim-treesitter-context (<a href="https://github.com/nvim-treesitter/nvim-treesitter-context.git">nvim-treesitter/nvim-treesitter-context</a>)  
+
 ### mason.nvim (<a href="https://github.com/mason-org/mason.nvim.git">mason-org/mason.nvim</a>)  
 `ltex`, `texlab`, `fortls`, `pylsp`, and `lua_ls` will be installed.
 
