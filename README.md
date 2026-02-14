@@ -38,13 +38,11 @@ They can be reset in `init.lua` by yourself.
 | `<leader>n` | `:set relativenumber!<CR>` | switch linenumber <-> relativenumber |
 | `<Tab>` | `:tabnext<CR>` | move to the next tab |
 | `<S-Tab>` | `:tabprevious<CR>` | move to the previous tab |
-| `<leader>wt` | `:tabnew` | open a new tab |
 | `<C-h>` | `<C-w>h` | move to the left window |
 | `<C-l>` | `<C-w>l` | move to the right window |
 | `<C-k>` | `<C-w>k` | move to the upper window |
 | `<C-j>` | `<C-w>j` | move to the lower window |
-| `<leader>sv` | `:vsplit<CR>` | split the window vertically |
-| `<leader>sh` | `:split<CR>` | split the window horizontally |
+| `<leader>wt` | `:tabnew` | open a new tab |
 | `<leader>wv` | `:vsplit` | open a file in a new vertical split |
 | `<leader>wh` | `:split` | open a file in a new horizontal split |
 | `<leader><BS>` | `:close<CR>` | close the current file |

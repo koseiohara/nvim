@@ -28,7 +28,6 @@ map('n', '<Leader>n', ':set relativenumber!<CR>', nore_silent)
 -- set tab --
 map('n', '<Tab>'     , ':tabnext<CR>'    , nore_silent)
 map('n', '<S-Tab>'   , ':tabprevious<CR>', nore_silent)
-map('n', '<Leader>wt', ':tabnew '        , nore_nosilent)
 
 -- move window --
 -- map('n', '<C-l>', ':wincmd l<CR>', nore_silent)
@@ -41,8 +40,7 @@ map('n', '<C-k>', '<C-w>k', nore_silent)
 map('n', '<C-j>', '<C-w>j', nore_silent)
 
 -- set window --
-map('n', '<Leader>sv'  , ':vsplit<CR>', nore_silent  )
-map('n', '<Leader>sh'  , ':split<CR>' , nore_silent  )
+map('n', '<Leader>wt'  , ':tabnew '   , nore_nosilent)
 map('n', '<Leader>wv'  , ':vsplit '   , nore_nosilent)
 map('n', '<Leader>wh'  , ':split '    , nore_nosilent)
 map('n', '<Leader><BS>', ':close<CR>' , nore_silent  )
