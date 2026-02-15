@@ -60,13 +60,13 @@ vim.api.nvim_set_hl(0, 'TabLineSel'     , {cterm={bold=true}     , bold=true,   
 vim.api.nvim_set_hl(0, 'TabLineFill'    , {cterm={}              ,                 ctermbg=232, bg='#080808', ctermfg=232, fg='#080808'})
 vim.api.nvim_set_hl(0, 'VertSplit'      , {cterm={}              ,                 ctermbg=233, bg='#121212', ctermfg=233, fg='#121212'})
 
-vim.api.nvim_set_hl(0, 'Normal', {bg='#161821', fg='#dadada'})
+vim.api.nvim_set_hl(0, 'Normal'     , {bg='#161821', fg='#dadada'})
 vim.api.nvim_set_hl(0, 'NormalFloat', {bg='#1e202d', fg='#dadada'})
 
 vim.api.nvim_set_hl(0, 'MainWinbarCrumb', {cterm={underline=true}, underline=true, ctermbg=233, bg='#121212', ctermfg=153, fg='#afd7ff'})
 vim.api.nvim_set_hl(0, 'MainWinbarSep'  , {cterm={underline=true}, underline=true, ctermbg=233, bg='#121212', ctermfg=153, fg='#afd7ff'})
 
-vim.api.nvim_set_hl(0, 'DiagnosticError', {fg = '#ac4141'})
+vim.api.nvim_set_hl(0, 'DiagnosticError'           , {fg = '#ac4141'})
 vim.api.nvim_set_hl(0, 'DiagnosticVirtualTextError', {link = 'DiagnosticError'})
 
 
