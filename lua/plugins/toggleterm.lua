@@ -31,6 +31,12 @@ return {
                 direction = 'tab',
             })
 
+            local Lazygit = terminal:new({
+                cmd       = 'lazygit',
+                direction = 'float',
+                hidden    = true,
+            })
+
             vim.api.nvim_create_user_command('Vterm', function()
                 Vterm:toggle()
             end,{})
@@ -43,9 +49,14 @@ return {
                 Tterm:toggle()
             end,{})
 
+            vim.api.nvim_create_user_command('Git', function()
+                Lazygit:toggle()
+            end,{})
+
             vim.keymap.set('n', '<leader>tt', '<cmd>Tterm<CR>', {silent = true})
             vim.keymap.set('n', '<leader>tv', '<cmd>Vterm<CR>', {silent = true})
             vim.keymap.set('n', '<leader>th', '<cmd>Hterm<CR>', {silent = true})
+            vim.keymap.set('n', '<leader>tg', '<cmd>Git<CR>'  , {silent = true})
 
             vim.keymap.set('t', '<ESC>', [[<C-\><C-n>]], { silent = true })
             vim.keymap.set('t', 'kj'   , [[<C-\><C-n>]], { silent = true })
