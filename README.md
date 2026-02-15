@@ -3,7 +3,7 @@
 This environment depends on various plugins, including a plugin manager.  
 Simply clone this repository into `$HOME/.config/` after neovim is built.  
 All files in this repository cannot be used with vim.  
-To fully use tools in this repository, install <a href="https://github.com/BurntSushi/ripgrep.git">ripgrep</a>, <a fref="https://github.com/tree-sitter/tree-sitter.git">tree-sitter-cli</a>, <a href="https://github.com/laishulu/macism.git">macism</a> (only on macOS), latexmk, and a suetable PDF viewer depending on your OS.
+To fully use tools in this repository <a href="https://github.com/jesseduffield/lazygit.git">lazygit</a>, install <a href="https://github.com/BurntSushi/ripgrep.git">ripgrep</a>, <a fref="https://github.com/tree-sitter/tree-sitter.git">tree-sitter-cli</a>, <a href="https://github.com/laishulu/macism.git">macism</a> (only on macOS), latexmk, and a suetable PDF viewer depending on your OS.
 
 - [Key Bindings](#key-bindings)
     - [Normal Mode](#normal-mode)
@@ -152,6 +152,7 @@ Key bindings
 | `<leader>tt` | open terminal in a new window |
 | `<leader>tv` | open terminal in a new vertical split |
 | `<leader>th` | open terminal in a new horizontal split |
+| `<leader>tg` | open lazygit in a new float split |
 
 ### vimtex (<a href="https://github.com/lervag/vimtex.git">lervag/vimtex</a>)  
 To edit latex source code using vimtex, install Skim on macOS, SumatraPDF on Windows, and Zathura on Linux.
