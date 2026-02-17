@@ -11,6 +11,18 @@ return {
     config = function()
         require('nvim-treesitter').setup({
             install_dir = vim.fn.stdpath('data') .. '/site',
+            highlight = {
+                enable = true,
+                -- disable = {
+                --     'fortran',
+                -- },
+            },
+            indent = {
+                enable = true,
+                -- disable = {
+                --     'fortran',
+                -- },
+            },
         })
 
         if vim.fn.executable('tree-sitter') == 1 then
@@ -27,16 +39,16 @@ return {
             })
         end
 
-        vim.api.nvim_create_autocmd('FileType', {
-            group = vim.api.nvim_create_augroup('treesitter-auto-start', { clear = true }),
-            pattern = {'*'},
-            callback = function(ev)
-                if vim.g.bigfile_mode then
-                    return
-                end
-                pcall(vim.treesitter.start, ev.buf)
-            end,
-        })
+        -- vim.api.nvim_create_autocmd('FileType', {
+        --     group = vim.api.nvim_create_augroup('treesitter-auto-start', { clear = true }),
+        --     pattern = {'*'},
+        --     callback = function(ev)
+        --         if vim.g.bigfile_mode then
+        --             return
+        --         end
+        --         pcall(vim.treesitter.start, ev.buf)
+        --     end,
+        -- })
     end,
 }
 
