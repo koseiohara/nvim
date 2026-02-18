@@ -10,7 +10,31 @@ return {
 
     config = function()
         local telescope = require('telescope')
-        telescope.setup({})
+        local actions   = require('telescope.actions')
+        telescope.setup({
+            defaults = {
+                initial_mode = 'normal',
+                mappings = {
+                    i = {
+                        ['<CR>'] = actions.select_tab,
+                    },
+                    n = {
+                        ['<CR>'] = actions.select_tab,
+                        ['<S-k>'] = function(prompt_bufnr)
+                            for _ = 1, 5 do
+                                actions.move_selection_previous(prompt_bufnr)
+                            end
+                        end,
+                        ['<S-j>'] = function(prompt_bufnr)
+                            for _ = 1, 5 do
+                                actions.move_selection_next(prompt_bufnr)
+                            end
+                        end,
+                    },
+                },
+            },
+        })
+
         local builtin   = require('telescope.builtin')
         vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
         vim.keymap.set('n', '<leader>fg', builtin.live_grep , {})
