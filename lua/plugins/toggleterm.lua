@@ -57,8 +57,6 @@ return {
             vim.keymap.set('n', '<leader>tf', '<cmd>Fterm<CR>', {silent = true})
 
             vim.keymap.set('t', '<ESC>', [[<C-\><C-n>]], { silent = true })
-            vim.keymap.set('t', 'kj'   , [[<C-\><C-n>]], { silent = true })
-            vim.keymap.set('t', 'Kj'   , [[<C-\><C-n>]], { silent = true })
             vim.keymap.set('t', 'KJ'   , [[<C-\><C-n>]], { silent = true })
         end,
     },
