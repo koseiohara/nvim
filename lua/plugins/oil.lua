@@ -36,12 +36,23 @@ return {
             bg = '#202027',
             fg = '#aaff8a',
         })
+        vim.api.nvim_set_hl(0, 'OilConfirmNormal', {
+            ctermbg = 234,
+            ctermfg = 250,
+            bg = '#202045',
+            fg = '#dddddd',
+        })
+        vim.api.nvim_set_hl(0, 'OilConfirmBorder', {
+            ctermbg = 234,
+            ctermfg = 250,
+            bg = '#202045',
+            fg = '#dddddd',
+        })
         vim.opt.splitright = true
         local oil = require('oil')
 
 
         oil.setup({
-            -- Automatically Open Oil --
             view_options = {
                 show_hidden = true,
             },
@@ -84,6 +95,20 @@ return {
                 signcolumn = 'no',
                 cursorcolumn = false,
                 foldcolumn = '0',
+            },
+            float = {
+                border  = 'rounded',
+                win_options = {
+                    winblend = 0,
+                    winhighlight = "Normal:OilConfirmNormal,FloatBorder:OilConfirmBorder",
+                },
+            },
+            confirmation = {
+                border  = 'rounded',
+                win_options = {
+                    winblend = 0,
+                    winhighlight = "Normal:OilConfirmNormal,FloatBorder:OilConfirmBorder",
+                },
             },
         })
 
