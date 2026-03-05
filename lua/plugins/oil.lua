@@ -125,7 +125,7 @@ return {
         local function ensure_oil_left(dir)
             dir = dir or vim.fn.getcwd()
 
-            if vim.g._opening_oil_sidebar then 
+            if vim.g._opening_oil_sidebar then
                 return
             end
 
@@ -138,7 +138,7 @@ return {
                 vim.cmd('topleft vsplit')
                 vim.cmd('vertical resize 30')
 
-                local oil = require('oil')
+                -- local oil = require('oil')
                 oil.open(dir, nil, function()
                     vim.cmd('wincmd H')
                     vim.cmd('vertical resize 30')
@@ -160,7 +160,7 @@ return {
 
 
         local function open_oil_left(dir)
-            local oil = require('oil')
+            -- local oil = require('oil')
             dir = dir or vim.fn.getcwd()
 
             vim.cmd('topleft vsplit')
@@ -178,7 +178,7 @@ return {
         end
 
         _G.OilWinbar = function()
-            local oil = require('oil')
+            -- local oil = require('oil')
             local dir = oil.get_current_dir() or ''
 
             dir = dir:gsub('/$', '')
@@ -201,7 +201,7 @@ return {
                 vim.opt_local.number = false
                 vim.opt_local.relativenumber = false
 
-                vim.opt_local.winhighlight = 'Normal:OilBackColor,' .. 
+                vim.opt_local.winhighlight = 'Normal:OilBackColor,' ..
                                              'CursorLine:OilCursorLine,'
 
                 vim.opt_local.winbar = "%{%v:lua.OilWinbar()%}"
