@@ -90,7 +90,19 @@ Some icons may not render correctly in certain terminal emulators, including Ter
 
 ### <a href="https://github.com/lewis6991/gitsigns.nvim.git">lewis6991/gitsigns.nvim</a>  
 
+### <a href="https://github.com/nvzone/showkeys.git">nvzone/showkeys</a>
+| Key | Action | Description |
+|-----|--------|-------------|
+| `:sk` | `:ShowkeysToggle<CR>` | show entered keys |
+
 ### <a href="https://github.com/romgrk/barbar.nvim.git">romgrk/barbar.nvim</a>  
+| Key | Action | Description |
+|-----|--------|-------------|
+| `<Tab>` | `:BufferNext<CR>` | move to the next tab (This command is overridden in barbar.nvim's setting) |
+| `<S-Tab>` | `:BufferPrevious<CR>` | move to the previous tab (This command is overridden in barbar.nvim's setting) |
+| `:bc` | `:BufferClose<CR>` | close the current buffer |
+
+### <a href="https://github.com/brenoprata10/nvim-highlight-colors.git">nvim-highlight-colors</a>
 
 ### <a href="https://github.com/tpope/vim-commentary.git">tpope/vim-commentary</a>  
 
@@ -115,8 +127,17 @@ If certain English words are incorrectly flagged as spelling mistakes by ltex, a
 
 ### <a href="https://github.com/kylechui/nvim-surround.git">kylechui/nvim-surround</a>  
 
+### <a href="https://github.com/folke/flash.nvim.git">folke/flash.nvim</a>
+| Key | Mode | Action | Description |
+|-----|------|--------|-------------|
+| `gs` | Normal, Operator-pending, Visual | jump | jump to the selected label |
+| `gS` | Normal, Operator-pending, Visual | treesitter | jump to the selected label in treesitter mode |
+| `r` | Operator-pending | remote | perform an operator at a remote location |
+| `R` | Operator-pending | treesitter_search | perform an operator at a remote location in treesitter mode |
+| `<C-s>` | Command | toggle | show and enable labels to jump to |
+
+
 ### <a href="https://github.com/stevearc/oil.nvim.git">stevearc/oil.nvim</a>  
-Newly defined key bindings
 | Key | Action | Description |
 |-----|--------|-------------|
 | `<C-h>` | `<Nop>` | (this command was removed) |
@@ -132,7 +153,6 @@ Newly defined key bindings
 
 ### <a href="https://github.com/nvim-telescope/telescope.nvim.git">nvim-telescope/telescope.nvim</a>  
 Descriptions follow these of <a href="https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#pickers">official GitHub repository</a>.  
-Key bindings
 | Key | Description |
 |-----|-------------|
 | `<leader>ff` | lists files in your current working directory |
@@ -149,7 +169,6 @@ Key bindings
 `<leader>fg` command needs <a href="https://github.com/BurntSushi/ripgrep.git">ripgrep</a>.
 
 ### <a href="https://github.com/akinsho/toggleterm.nvim.git">akinsho/toggleterm.nvim</a>  
-Key bindings
 | Key | Description |
 |-----|-------------|
 | `<leader>tt` | open terminal in a new window |
@@ -164,7 +183,6 @@ Key bindings
 ### <a href="https://github.com/lervag/vimtex.git">lervag/vimtex</a>  
 To edit latex source code using vimtex, install Skim on macOS, SumatraPDF on Windows, and Zathura on Linux.
 Also, `latexmk` is needed to compile source codes.  
-Key bindings
 | Key | Description |
 |-----|-------------|
 | `<localleader>ll` | compile souce. if `.latexmkrc` is not in the same directory as the main file, it will be generated automatically |
