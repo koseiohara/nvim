@@ -6,6 +6,7 @@ return {
         'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
         'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
     },
+    lazy = false,
     init = function() vim.g.barbar_auto_setup = false end,
     opts = {
         -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
@@ -19,7 +20,23 @@ return {
         return not vim.g.bigfile_mode
     end,
 
+    keys = {
+        {
+            '<Tab>',
+            '<cmd>BufferNext<CR>',
+            desc = 'Next buffer',
+        },
+        {
+            '<S-Tab>',
+            '<cmd>BufferPrevious<CR>',
+            desc = 'Previous buffer',
+        },
+    },
+
     config = function()
+        vim.cmd[[
+            cnoreabbrev <expr> bc getcmdtype() == ':' && getcmdline() ==# 'bc' ? 'BufferClose' : 'bc'
+        ]]
         vim.api.nvim_set_hl(0, 'BufferCurrent'    , {cterm={bold=true}, bold=true, ctermbg=153, bg='#aec7ff', ctermfg=16 , fg='#000000'})
         vim.api.nvim_set_hl(0, 'BufferCurrentMod' , {                              ctermbg=153, bg='#aec7ff', ctermfg=21 , fg='#0000ff'})
         vim.api.nvim_set_hl(0, 'BufferVisible'    , {                              ctermbg=235, bg='#262626', ctermfg=153, fg='#aec7ff'})
@@ -69,6 +86,7 @@ return {
             }
         }
     end,
+
 }
 
 
