@@ -28,7 +28,9 @@ return {
             ['<Left>']  = 'Left',
             ['<Right>'] = 'Right',
         },
-        vim.cmd('cabbrev sk ShowkeysToggle')
+        vim.cmd[[
+            cnoreabbrev <expr> sk getcmdtype() == ':' && getcmdline() ==# 'sk' ? 'ShowkeysToggle' : 'sk'
+        ]]
     }
 }
 
