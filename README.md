@@ -180,6 +180,11 @@ Descriptions follow these of <a href="https://github.com/nvim-telescope/telescop
 Key bindings
 | `<leader>gg` | open lazygit in a new float split |
 
+### <a href=https://github.com/OXY2DEV/markview.nvim.git>OXY2DEV/markview.nvim</a>
+| Key | Description |
+|-----|-------------|
+| `<localleader>md` | show a markdown viewer in a vertical split |
+
 ### <a href="https://github.com/lervag/vimtex.git">lervag/vimtex</a>  
 To edit latex source code using vimtex, install Skim on macOS, SumatraPDF on Windows, and Zathura on Linux.
 Also, `latexmk` is needed to compile source codes.  
