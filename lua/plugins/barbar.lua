@@ -57,7 +57,7 @@ return {
 
         require'barbar'.setup{
             animation = true,
-            auto_hide = 10,
+            auto_hide = 1,
 
             focus_on_close = 'left',
 
