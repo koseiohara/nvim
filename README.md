@@ -98,8 +98,8 @@ Some icons may not render correctly in certain terminal emulators, including Ter
 ### <a href="https://github.com/romgrk/barbar.nvim.git">romgrk/barbar.nvim</a>  
 | Key | Action | Description |
 |-----|--------|-------------|
-| `<Tab>` | `:BufferNext<CR>` | move to the next tab (This command is overridden in barbar.nvim's setting) |
-| `<S-Tab>` | `:BufferPrevious<CR>` | move to the previous tab (This command is overridden in barbar.nvim's setting) |
+| `<Tab>` | `:BufferNext<CR>` | move to the next tab |
+| `<S-Tab>` | `:BufferPrevious<CR>` | move to the previous tab |
 | `:bc` | `:BufferClose<CR>` | close the current buffer |
 
 ### <a href="https://github.com/brenoprata10/nvim-highlight-colors.git">nvim-highlight-colors</a>
@@ -183,7 +183,8 @@ Key bindings
 ### <a href=https://github.com/OXY2DEV/markview.nvim.git>OXY2DEV/markview.nvim</a>
 | Key | Description |
 |-----|-------------|
-| `<localleader>md` | show a markdown viewer in a vertical split |
+| `<localleader>md` | show a markdown viewer |
+| `<localleader>ms` | show a markdown viewer in a vertical split |
 
 ### <a href="https://github.com/lervag/vimtex.git">lervag/vimtex</a>  
 To edit latex source code using vimtex, install Skim on macOS, SumatraPDF on Windows, and Zathura on Linux.
