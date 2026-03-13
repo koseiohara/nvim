@@ -23,6 +23,7 @@ return {
         keyformat = {
             ['<BS>']    = 'BS',
             ['<CR>']    = 'Return',
+            ['<Space>'] = 'Space',
             ['<Up>']    = 'Up',
             ['<Down>']  = 'Down',
             ['<Left>']  = 'Left',
