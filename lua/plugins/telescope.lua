@@ -13,7 +13,7 @@ return {
         local actions   = require('telescope.actions')
         telescope.setup({
             defaults = {
-                initial_mode = 'normal',
+                initial_mode = 'insert',
                 mappings = {
                     i = {
                         ['<CR>'] = actions.select_tab,
