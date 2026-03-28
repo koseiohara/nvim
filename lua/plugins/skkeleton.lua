@@ -70,8 +70,7 @@ return {
                 pattern = { 'markdown', 'text', 'tex' },
                 callback = function(args)
                     local opts = { buffer = args.buf, silent = true }
-                    vim.keymap.set({ 'i', 'c' }, '<C-j>', '<Plug>(skkeleton-toggle)', opts)
-                    vim.keymap.set('i', '<C-l>', '<Plug>(skkeleton-disable)', opts)
+                    vim.keymap.set({'i'}, '<C-j>', '<Plug>(skkeleton-toggle)', opts)
                 end,
             })
         end,

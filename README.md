@@ -38,10 +38,6 @@ They can be reset in `init.lua` by yourself.
 | `<leader>n` | `:set relativenumber!<CR>` | switch linenumber <-> relativenumber |
 | `<Tab>` | `:tabnext<CR>` | move to the next tab (This command is overridden in barbar.nvim's setting) |
 | `<S-Tab>` | `:tabprevious<CR>` | move to the previous tab (This command is overridden in barbar.nvim's setting)|
-| `<C-h>` | `<C-w>h` | move to the left window |
-| `<C-l>` | `<C-w>l` | move to the right window |
-| `<C-k>` | `<C-w>k` | move to the upper window |
-| `<C-j>` | `<C-w>j` | move to the lower window |
 | `<leader>wt` | `:tabnew` | open a new tab |
 | `<leader>wv` | `:vsplit` | open a file in a new vertical split |
 | `<leader>wh` | `:split` | open a file in a new horizontal split |
@@ -200,6 +196,14 @@ To change the compile method, edit the original `tools/.latexmkrc`.
 #### NOTE
 - VimTex's settings have not been tested on Windows and Linux.
 
+### <a href="https://github.com/lervag/vimtex.git">vim-denops/denops.vim</a>  
+
+### <a href="https://github.com/vim-skk/skkeleton">vim-skk/skkeleton</a>  
+Available only when the file type is tex, markdown, or txt.
+Install `deno` via Homebrew and clone <a href="https://github.com/skk-dev/dict.git">dictionary</a> in `$HOME/.config/`.
+| Key | Description |
+|-----|-------------|
+| `<C-j>` | Enable/disable skkeleton |
 
 
 
