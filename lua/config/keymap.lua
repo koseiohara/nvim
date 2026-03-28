@@ -30,10 +30,10 @@ map('n', '<Tab>'     , ':tabnext<CR>'    , nore_silent)
 map('n', '<S-Tab>'   , ':tabprevious<CR>', nore_silent)
 
 -- move window --
--- map('n', '<C-l>', '<C-w>l', nore_silent)
--- map('n', '<C-h>', '<C-w>h', nore_silent)
--- map('n', '<C-k>', '<C-w>k', nore_silent)
--- map('n', '<C-j>', '<C-w>j', nore_silent)
+map('n', '<C-l>', '<C-w>l', nore_silent)
+map('n', '<C-h>', '<C-w>h', nore_silent)
+map('n', '<C-k>', '<C-w>k', nore_silent)
+map('n', '<C-j>', '<C-w>j', nore_silent)
 
 -- set window --
 map('n', '<Leader>wt'  , ':tabnew '   , nore_nosilent)
