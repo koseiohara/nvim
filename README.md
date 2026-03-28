@@ -205,9 +205,9 @@ To change the compile method, edit the original `tools/.latexmkrc`.
 ### <a href="https://github.com/vim-skk/skkeleton">vim-skk/skkeleton</a>  
 Available only when the file type is tex, markdown, or txt.
 Install `deno` via Homebrew and clone <a href="https://github.com/skk-dev/dict.git">dictionary</a> in `$HOME/.config/`.
-| Key | Description |
-|-----|-------------|
-| `<C-j>` | Enable/disable skkeleton |
+| Key | Mode | Description |
+|-----|------|-------------|
+| `<C-j>` | `Insert` | Enable/disable skkeleton |
 
 
 
