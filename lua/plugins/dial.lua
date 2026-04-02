@@ -154,8 +154,8 @@ return {
                     cyclic = true,
                 }),
                 augend.constant.new({
-                    elements = { 'OUT', 'IN', 'INOUT' },
-                    word   = false,
+                    elements = { 'IN', 'OUT', 'INOUT' },
+                    word   = true,
                     cyclic = true,
                 }),
                 augend.constant.new({
