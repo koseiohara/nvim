@@ -207,8 +207,10 @@ Available only when the file type is tex, markdown, or txt.
 Install `deno` via Homebrew and clone <a href="https://github.com/skk-dev/dict.git">dictionary</a> in `$HOME/.config/`.
 | Key | Mode | Description |
 |-----|------|-------------|
-| `<C-j>` | `Insert` | Enable skkeleton |
-| `<C-k>` | `Insert` | Disable skkeleton |
+| `<C-j>` | `Insert` | Enable/disable skkeleton |
+
+### <a href="https://github.com/monaqa/dial.nvim.git">monaqa/dial.nvim.git</a>  
+3-digit month format is also supported.
 
 
 
