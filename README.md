@@ -210,7 +210,10 @@ Install `deno` via Homebrew and clone <a href="https://github.com/skk-dev/dict.g
 | `<C-j>` | `Insert` | Enable/disable skkeleton |
 
 ### <a href="https://github.com/monaqa/dial.nvim.git">monaqa/dial.nvim.git</a>  
-3-digit month format is also supported.
+New dials:
+- 3-digit months (Jan - Feb - Mar - ... - Dec - Jan - ...)
+- Fortran logical (`.True.` - `.False.`)
+- begin/end (`begin` - `end`)
 
 
 

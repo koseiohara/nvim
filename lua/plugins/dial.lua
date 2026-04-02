@@ -14,6 +14,11 @@ return {
                 augend.integer.alias.hex,
                 augend.constant.alias.bool,
                 augend.constant.new({
+                    elements = { 'begin', 'end' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
                     elements = { '.true.', '.false.' },
                     word   = false,
                     cyclic = true,
@@ -88,6 +93,11 @@ return {
                 augend.integer.alias.decimal,
                 augend.integer.alias.hex,
                 augend.constant.alias.bool,
+                augend.constant.new({
+                    elements = { 'begin', 'end' },
+                    word   = false,
+                    cyclic = true,
+                }),
                 augend.constant.new({
                     elements = { '.true.', '.false.' },
                     word   = false,
