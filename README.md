@@ -191,7 +191,7 @@ To edit latex source code using vimtex, install Skim on macOS, SumatraPDF on Win
 Also, `latexmk` is needed to compile source codes.  
 | Key | Description |
 |-----|-------------|
-| `<localleader>ll` | compile souce. if `.latexmkrc` is not in the same directory as the main file, it will be generated automatically |
+| `<localleader>ll` | compile source. if `.latexmkrc` is not in the same directory as the main file, it will be generated automatically |
 | `<localleader>le` | open/close error window |
 
 The automatically generated `.latexmkrc` is a copy of `tools/.latexmkrc`.
@@ -211,9 +211,12 @@ Install `deno` via Homebrew and clone <a href="https://github.com/skk-dev/dict.g
 
 ### <a href="https://github.com/monaqa/dial.nvim.git">monaqa/dial.nvim.git</a>  
 New dials:
-- 3-digit months (Jan - Feb - Mar - ... - Dec - Jan - ...)
-- Fortran logical (`.True.` - `.False.`)
+- 3-digit months (`Jan` - `Feb` - `Mar` - ... - `Dec`)
 - begin/end (`begin` - `end`)
+- Inequality signs (`<` - `>`, `<=` - `>=`)
+- Arithmetic operators (`+` - `-` - `*` - `/`)
+- Fortran logical (`.True.` - `.False.`)
+- Fortran intent attribute (`out` - `in` - `inout`)
 
 
 

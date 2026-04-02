@@ -19,6 +19,36 @@ return {
                     cyclic = true,
                 }),
                 augend.constant.new({
+                    elements = { '<', '>' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
+                    elements = { '<=', '>=' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
+                    elements = { '+', '-', '*', '/' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
+                    elements = { 'out', 'in', 'inout' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
+                    elements = { 'Out', 'In', 'Inout' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
+                    elements = { 'OUT', 'IN', 'INOUT' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
                     elements = { '.true.', '.false.' },
                     word   = false,
                     cyclic = true,
@@ -95,6 +125,36 @@ return {
                 augend.constant.alias.bool,
                 augend.constant.new({
                     elements = { 'begin', 'end' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
+                    elements = { '<', '>' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
+                    elements = { '<=', '>=' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
+                    elements = { '+', '-', '*', '/' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
+                    elements = { 'out', 'in', 'inout' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
+                    elements = { 'Out', 'In', 'Inout' },
+                    word   = false,
+                    cyclic = true,
+                }),
+                augend.constant.new({
+                    elements = { 'OUT', 'IN', 'INOUT' },
                     word   = false,
                     cyclic = true,
                 }),
