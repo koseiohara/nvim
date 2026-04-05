@@ -39,7 +39,7 @@ return {
                     cyclic = true,
                 }),
                 augend.constant.new({
-                    elements = { 'in', 'Out', 'Inout' },
+                    elements = { 'In', 'Out', 'Inout' },
                     word   = true,
                     cyclic = true,
                 }),
@@ -149,7 +149,7 @@ return {
                     cyclic = true,
                 }),
                 augend.constant.new({
-                    elements = { 'in', 'Out', 'Inout' },
+                    elements = { 'In', 'Out', 'Inout' },
                     word   = true,
                     cyclic = true,
                 }),
