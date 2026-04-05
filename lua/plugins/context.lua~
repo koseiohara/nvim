@@ -1,0 +1,116 @@
+
+
+return {
+    'wellle/context.vim',
+    event = 'BufReadPost',
+    init = function()
+        vim.g.context_enabled = 1
+        vim.g.context_max_height = 9
+        vim.g.context_max_per_indent = 3
+        vim.g.context_max_join_parts = 3
+        vim.g.context_ellipsis_char = '·'
+
+        vim.g.context_presenter = 'nvim-float'
+        -- vim.g.context_presenter = 'preview'
+
+        -- vim.g.context_border_char = '━'
+        vim.g.context_border_char = ''
+        vim.g.context_highlight_border = '<hide>'
+        vim.g.context_highlight_normal = 'ContextFloat'
+        -- vim.g.context_highlight_border = 'ContextBottom'
+        vim.g.context_highlight_tag    = '<hide>'
+
+        vim.g.Context_border_indent = function()
+            return {0, 0}
+        end
+
+        -- local aug = vim.api.nvim_create_augroup("ContextVimFtConfig", { clear = true })
+        -- vim.api.nvim_create_autocmd('FileType', {
+        -- })
+
+        -- vim.g.context_extend_regex = [[^\s*\([]{})]\|end\|else\|elif\|case\>\|default\>\)]]
+        local context_defaults = {
+            skip_regex   = [[^\s*$]],
+            extend_regex = [[^\s*\([]{})]\|end\|else\|\(case\|default\|done\|elif\|fi\)\>\)]],
+            join_regex   = [[^\W*$]],
+            indent = nil,
+        }
+        local context_ft = {
+            python = {
+                skip_regex = [[^\s*\($\|#\)]],
+            },
+            c = {
+                skip_regex = [[^\s*\($\|#\|//\|/\*\|\*\($\|\s\|/\)\)]],
+            },
+            cpp = {
+                skip_regex = [[^\s*\($\|#\|//\|/\*\|\*\($\|\s\|/\)\)]],
+            },
+            lua = {
+                skip_regex = [[^\s*\($\|--\)]],
+            },
+            fortran = {
+                skip_regex = [[^\s*\($\|!\)]],
+            },
+            tex = {
+                skip_regex = [[^\s*\($\|%\)]],
+            },
+            markdown = {
+                skip_regex   = [[^\s*$]],
+                extend_regex = [[^\s*\([]{})]\|#\|end\|else\|\(case\|default\|done\|elif\|fi\)\>\)]],
+                indent = function(lnum)
+                    if lnum < 1 or lnum > vim.fn.line("$") then
+                        return {-1, -1}
+                    end
+
+                    local line = vim.fn.getline(lnum)
+                    local hashes = line:match("^(#+)%s+")
+                    if hashes then
+                        return {#hashes * 2, 0}
+                    end
+
+                    local ind = vim.fn.indent(lnum)
+                    return {ind, ind}
+                end,
+            },
+        }
+        local function merge_context_config(ft)
+            local cfg = vim.tbl_extend("force", {}, context_defaults, context_ft[ft] or {})
+            return cfg
+        end
+        local function apply_context_config(ft)
+            local cfg = merge_context_config(ft)
+
+            vim.g.context_skip_regex   = cfg.skip_regex
+            vim.g.context_extend_regex = cfg.extend_regex
+            vim.g.context_join_regex   = cfg.join_regex
+            vim.g.Context_indent       = cfg.indent
+        end
+
+        local aug = vim.api.nvim_create_augroup("ContextVimConfig", { clear = true })
+        vim.api.nvim_create_autocmd(
+            {'BufEnter', 'FileType'},
+            {
+                group = aug,
+                callback = function(args)
+                    apply_context_config(vim.bo[args.buf].filetype)
+                    -- pcall(vim.cmd, 'ContextUpdate')
+                end,
+            }
+        )
+    end,
+
+
+    config = function()
+        vim.api.nvim_set_hl(0, 'ContextBottom', {
+            sp = '#7aa2f7',
+            underline = true
+        })
+        vim.api.nvim_set_hl(0, 'ContextFloat', {
+            bg = '#1a233b',
+            -- bg = '#161821',
+        })
+    end,
+}
+
+
+
