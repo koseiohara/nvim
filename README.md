@@ -28,7 +28,7 @@ They can be reset in `init.lua` by yourself.
 | `<S-h>` | `10h` | move left 10 columns |
 | `<S-l>` | `10l` | move right 10 columns |
 | `<S-k>` | `10k` | move up 10 lines |
-| `<S-h>` | `10h` | move down 10 lines |
+| `<S-j>` | `10j` | move down 10 lines |
 | `<leader>b` | `%` | move to bracket |
 | `x` | `"_x` | delete a character without yanking |
 | `s` | `"_s` | delete a character and enter insert mode without yanking |
