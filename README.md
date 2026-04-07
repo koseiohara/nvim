@@ -204,11 +204,7 @@ To change the compile method, edit the original `tools/.latexmkrc`.
 
 ### <a href="https://github.com/vim-skk/skkeleton">vim-skk/skkeleton</a>  
 Available only when the file type is tex, markdown, or txt.
-Execute the following command to generate user dictionary:
-```sh
-$ mkdir -p $HOME/.config/skkeleton
-```
-Install `deno` via any package manager and clone <a href="https://github.com/skk-dev/dict.git">dictionary</a> in `$HOME/.config/`.
+Install `deno` via Homebrew and clone <a href="https://github.com/skk-dev/dict.git">dictionary</a> in `$HOME/.config/`.
 | Key | Mode | Description |
 |-----|------|-------------|
 | `<C-j>` | `Insert` | Enable/disable skkeleton |
