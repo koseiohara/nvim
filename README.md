@@ -1,9 +1,12 @@
-# Neovim-Environment
+# Neovim-Config
 
 This environment depends on various plugins, including a plugin manager.  
 Simply clone this repository into `$HOME/.config/` after neovim is built.  
 All files in this repository cannot be used with vim.  
-To fully use tools in this repository, install <a href="https://github.com/jesseduffield/lazygit.git">lazygit</a> for lazygit, <a href="https://github.com/BurntSushi/ripgrep.git">ripgrep</a> for telescope, <a fref="https://github.com/tree-sitter/tree-sitter.git">tree-sitter-cli</a> for treesitter, <a href="https://github.com/laishulu/macism.git">macism</a> (only on macOS) for better InsertLeave experience, latexmk for vimtex, a suetable PDF viewer depending on your OS for vimtex, and <a href="https://github.com/skk-dev/dict.git">dictionary</a> and `deno` for skkeleton.
+To fully use tools in this repository, install <a href="https://github.com/jesseduffield/lazygit.git">lazygit</a> for lazygit, <a href="https://github.com/BurntSushi/ripgrep.git">ripgrep</a> for telescope, <a fref="https://github.com/tree-sitter/tree-sitter.git">tree-sitter-cli</a> for treesitter, <a href="https://github.com/laishulu/macism.git">macism</a> (only on macOS) for better InsertLeave experience, latexmk for vimtex, a suetable PDF viewer depending on your OS for vimtex, and <a href="https://github.com/skk-dev/dict.git">dictionary</a> and `deno` for skkeleton.  
+
+This Neovim setup focuses on manual editing efficiency.
+It may not suit those who rely on completion or automation, as these features are intentionally disabled.
 
 - [Key Bindings](#key-bindings)
     - [Normal Mode](#normal-mode)
