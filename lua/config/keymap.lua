@@ -46,9 +46,9 @@ map('n', '<up>'        , '<C-w>+'     , nore_silent  )
 map('n', '<down>'      , '<C-w>-'     , nore_silent  )
 
 -- return to normal mode --
-map('i', 'kj', '<Esc>', nore)
-map('i', 'Kj', '<Esc>', nore)
-map('i', 'KJ', '<Esc>', nore)
+map('i', 'jk', '<Esc>', nore)
+map('i', 'Jk', '<Esc>', nore)
+map('i', 'JK', '<Esc>', nore)
 
 -- indent modification file visual mode --
 map('v', '<', '<gv', nore)
