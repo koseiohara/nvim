@@ -4,6 +4,7 @@ return {
 
     config = function()
 
+        local c_show_warnings       = false
         local fortran_show_warnings = false
         local python_show_warnings  = false
         local lua_show_warnings     = false
@@ -81,7 +82,9 @@ return {
         local function on_attach(client, bufnr)
             disable_ui_capabilities(client, bufnr)
             -- set_tex_diagnostic_handlers(bufnr, tex_show_warnings)
-            if client.name == 'fortls' then
+            if client.name == 'clangd' then
+                set_standard_diagnostic_handlers(client, c_show_warnings)
+            elseif client.name == 'fortls' then
                 set_standard_diagnostic_handlers(client, fortran_show_warnings)
             elseif client.name == 'pylsp' then
                 set_standard_diagnostic_handlers(client, python_show_warnings)
@@ -103,6 +106,10 @@ return {
                 local root = vim.fs.root(fname, flags) or vim.fs.dirname(fname)
                 on_dir(root)
             end
+        end
+
+        local function c_root(bufnr, fname)
+            return vim.fs.root(fname, { '.git', 'Makefile', 'main.c', 'main.cpp' }) or vim.fs.dirname(fname)
         end
 
         local function fortran_root(bufnr, fname)
@@ -148,10 +155,30 @@ return {
             end
         end
 
+        local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
+
+        -- =========================================
+        --  LSP Server Setting for C and C++
+        -- =========================================
+        vim.lsp.config('clangd', {
+            cmd = {
+                mason_bin .. "/clangd",
+            },
+            on_attach = on_attach,
+            filetypes = { 'c', 'cpp' },
+            root_dir  = root_maker({ '.git', 'Makefile', 'main.c', 'main.cpp' }),
+
+            settings = {
+                clangd = {
+                    disable_diagnostics = false,
+                },
+            },
+        })
+
         -- =========================================
         --  LSP Server Setting for Fortran
         -- =========================================
-        local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
+        -- local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
         vim.lsp.config('fortls', {
             cmd = {
                 mason_bin .. "/fortls",
@@ -362,6 +389,7 @@ return {
 
 
         vim.lsp.enable({
+            'clangd',
             'fortls',
             'pylsp',
             'lua_ls',

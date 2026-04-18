@@ -20,6 +20,7 @@ return {
             'lua',
             'vim',
             'c',
+            'cpp',
             'bash',
             'markdown',
             'markdown_inline',

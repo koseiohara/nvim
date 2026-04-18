@@ -11,6 +11,7 @@ return {
         dependencies = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
         opts = {
             ensure_installed = {
+                'clangd',
                 'fortls',
                 'pylsp',
                 'lua_ls',
