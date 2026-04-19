@@ -224,7 +224,7 @@ New dials:
 - 3-digit months (`Jan` - `Feb` - `Mar` - ... - `Dec`)
 - begin/end (`begin` - `end`)
 - Inequality signs (`<` - `>`, `<=` - `>=`)
-- Arithmetic operators (`+` - `-` - `*` - `/`)
+- Arithmetic operators (`+` - `-`)
 - Fortran logical (`.True.` - `.False.`)
 - Fortran intent attribute (`out` - `in` - `inout`)
 
