@@ -49,10 +49,14 @@ They can be reset in `init.lua` by yourself.
 | `<leader>wv` | `:vsplit` | open a file in a new vertical split |
 | `<leader>wh` | `:split` | open a file in a new horizontal split |
 | `<leader><BS>` | `:close<CR>` | close the current file |
-| `<right>` | `<C-w><` | decrease window width |
-| `<left>` | `<C-w>>` | increase window width |
-| `<down>` | `<C-w>-` | decrease window height |
-| `<up>` | `<C-w>+` | increase window height |
+| `<right>` | `<Nop>` | decrease window width |
+| `<left>` | `<Nop>` | increase window width |
+| `<down>` | `<Nop>` | decrease window height |
+| `<up>` | `<Nop>` | increase window height |
+| `<S-right>` | `<C-w><` | decrease window width |
+| `<S-left>` | `<C-w>>` | increase window width |
+| `<S-down>` | `<C-w>-` | decrease window height |
+| `<S-up>` | `<C-w>+` | increase window height |
 
 ### Insert Mode<a id="insert-mode"></a>
 | Key | Action | Description |
@@ -218,6 +222,7 @@ $ mkdir -p $HOME/.config/skkeleton
 |-----|------|-------------|
 | `<C-j>` | `Insert` | Enable skkeleton |
 | `<C-k>` | `Insert` | Disable skkeleton |
+| `<C-l>` | `Insert` | return to normal mode |
 
 ### <a href="https://github.com/monaqa/dial.nvim.git">monaqa/dial.nvim.git</a>  
 New dials:
