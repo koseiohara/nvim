@@ -72,6 +72,7 @@ return {
                     local opts = { buffer = args.buf, silent = true }
                     vim.keymap.set({'i'}, '<C-j>', '<Plug>(skkeleton-enable)' , opts)
                     vim.keymap.set({'i'}, '<C-k>', '<Plug>(skkeleton-disable)', opts)
+                    vim.keymap.set({'i'}, '<C-l>', '<Esc>', {noremap = true})
                 end,
             })
         end,
