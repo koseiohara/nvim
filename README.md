@@ -49,10 +49,10 @@ They can be reset in `init.lua` by yourself.
 | `<leader>wv` | `:vsplit` | open a file in a new vertical split |
 | `<leader>wh` | `:split` | open a file in a new horizontal split |
 | `<leader><BS>` | `:close<CR>` | close the current file |
-| `<right>` | `<Nop>` | decrease window width |
-| `<left>` | `<Nop>` | increase window width |
-| `<down>` | `<Nop>` | decrease window height |
-| `<up>` | `<Nop>` | increase window height |
+| `<right>` | `<Nop>` | (this command was removed) |
+| `<left>` | `<Nop>` | (this command was removed) |
+| `<down>` | `<Nop>` | (this command was removed) |
+| `<up>` | `<Nop>` | (this command was removed) |
 | `<S-right>` | `<C-w><` | decrease window width |
 | `<S-left>` | `<C-w>>` | increase window width |
 | `<S-down>` | `<C-w>-` | decrease window height |
@@ -62,10 +62,10 @@ They can be reset in `init.lua` by yourself.
 | Key | Action | Description |
 |-----|--------|-------------|
 | `kj`/`Kj`/`KJ` | `<Esc>` | return to normal mode |
-| `<right>` | `<Nop>` | decrease window width |
-| `<left>` | `<Nop>` | increase window width |
-| `<down>` | `<Nop>` | decrease window height |
-| `<up>` | `<Nop>` | increase window height |
+| `<right>` | `<Nop>` | (this command was removed) |
+| `<left>` | `<Nop>` | (this command was removed) |
+| `<down>` | `<Nop>` | (this command was removed) |
+| `<up>` | `<Nop>` | (this command was removed) |
 
 ### Visual Mode<a id="visual-mode"></a>
 | Key | Action | Description |
