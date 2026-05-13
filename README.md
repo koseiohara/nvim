@@ -62,6 +62,10 @@ They can be reset in `init.lua` by yourself.
 | Key | Action | Description |
 |-----|--------|-------------|
 | `kj`/`Kj`/`KJ` | `<Esc>` | return to normal mode |
+| `<right>` | `<Nop>` | decrease window width |
+| `<left>` | `<Nop>` | increase window width |
+| `<down>` | `<Nop>` | decrease window height |
+| `<up>` | `<Nop>` | increase window height |
 
 ### Visual Mode<a id="visual-mode"></a>
 | Key | Action | Description |

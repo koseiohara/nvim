@@ -44,10 +44,11 @@ map('n', '<S-right>'   , '<C-w><'     , nore_silent  )
 map('n', '<S-left>'    , '<C-w>>'     , nore_silent  )
 map('n', '<S-up>'      , '<C-w>+'     , nore_silent  )
 map('n', '<S-down>'    , '<C-w>-'     , nore_silent  )
-map('n', '<right>'     , '<Nop>'     , nore_silent  )
-map('n', '<left>'      , '<Nop>'     , nore_silent  )
-map('n', '<up>'        , '<Nop>'     , nore_silent  )
-map('n', '<down>'      , '<Nop>'     , nore_silent  )
+
+map({'n', 'i'}, '<right>', '<Nop>', nore_silent  )
+map({'n', 'i'}, '<left>' , '<Nop>', nore_silent  )
+map({'n', 'i'}, '<up>'   , '<Nop>', nore_silent  )
+map({'n', 'i'}, '<down>' , '<Nop>', nore_silent  )
 
 -- return to normal mode --
 map('i', 'kj', '<Esc>', nore)
