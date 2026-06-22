@@ -28,11 +28,11 @@ return {
                     word   = false,
                     cyclic = true,
                 }),
-                augend.constant.new({
-                    elements = { '+', '-' },
-                    word   = false,
-                    cyclic = true,
-                }),
+                -- augend.constant.new({
+                --     elements = { '+', '-' },
+                --     word   = false,
+                --     cyclic = true,
+                -- }),
                 augend.constant.new({
                     elements = { 'in', 'out', 'inout' },
                     word   = true,
@@ -138,11 +138,11 @@ return {
                     word   = false,
                     cyclic = true,
                 }),
-                augend.constant.new({
-                    elements = { '+', '-' },
-                    word   = false,
-                    cyclic = true,
-                }),
+                -- augend.constant.new({
+                --     elements = { '+', '-' },
+                --     word   = false,
+                --     cyclic = true,
+                -- }),
                 augend.constant.new({
                     elements = { 'in', 'out', 'inout' },
                     word   = true,
