@@ -182,6 +182,8 @@ return {
         vim.lsp.config('fortls', {
             cmd = {
                 mason_bin .. "/fortls",
+                "--config",
+                vim.fn.expand("~/.config/lsp/fortls.json"),
                 -- "--debug_log",
                 -- "--disable_autoupdate",
                 "--notify_init",
