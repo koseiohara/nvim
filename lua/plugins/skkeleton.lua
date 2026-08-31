@@ -13,7 +13,7 @@ return {
         dependencies = {
             'vim-denops/denops.vim',
         },
-        ft = { 'markdown', 'text', 'tex', 'html', 'css' },
+        ft = { 'markdown', 'text', 'tex', 'html', 'css', 'javascript' },
         cond = function()
             return vim.fn.executable('deno') == 1
         end,
@@ -67,7 +67,7 @@ return {
             })
 
             vim.api.nvim_create_autocmd('FileType', {
-                pattern = { 'markdown', 'text', 'tex', 'html', 'css' },
+                pattern = { 'markdown', 'text', 'tex', 'html', 'css', 'javascript' },
                 callback = function(args)
                     local opts = { buffer = args.buf, silent = true }
                     vim.keymap.set({'i'}, '<C-j>', '<Plug>(skkeleton-enable)' , opts)
