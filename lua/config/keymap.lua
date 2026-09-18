@@ -24,6 +24,7 @@ map('n', ';'        , ':'    , nore_silent)
 map('n', '<Leader>q', 'q:'   , nore_silent)
 map('n', 'q:'       , '<Nop>', nore_silent)
 map('n', '<Leader>n', ':set relativenumber!<CR>', nore_silent)
+map('n', '<Leader>j', 'J', nore_silent)
 
 -- set tab --
 map('n', '<Tab>'     , ':tabnext<CR>'    , nore_silent)
