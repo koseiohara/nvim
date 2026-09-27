@@ -45,6 +45,7 @@ map('n', '<S-right>'   , '<C-w><'     , nore_silent  )
 map('n', '<S-left>'    , '<C-w>>'     , nore_silent  )
 map('n', '<S-up>'      , '<C-w>+'     , nore_silent  )
 map('n', '<S-down>'    , '<C-w>-'     , nore_silent  )
+map('n', '<C-z>'       , '<Nop>'      , nore_silent  )
 
 map({'n', 'i'}, '<right>', '<Nop>', nore_silent  )
 map({'n', 'i'}, '<left>' , '<Nop>', nore_silent  )
